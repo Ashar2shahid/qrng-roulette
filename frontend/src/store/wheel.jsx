@@ -9,6 +9,8 @@ import {
 export const wheel = (set, get) => ({
   result: null,
   spinned: false, // bolean telling if wheel has been spinned
+  isSpinning: false, // boolean telling if wheel is spinning
+
   loadingContract: { status: false, message: "" },
 
   setResult: (result) =>
@@ -26,6 +28,15 @@ export const wheel = (set, get) => ({
       wheel: {
         ...state.wheel,
         spinned,
+      },
+    })),
+
+  setIsSpinning: (isSpinning) =>
+    set((state) => ({
+      ...state,
+      wheel: {
+        ...state.wheel,
+        isSpinning,
       },
     })),
 
