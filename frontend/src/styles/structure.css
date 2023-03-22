@@ -1,0 +1,36 @@
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh; /* be at least a full viewport height */
+} 
+
+main {
+	flex-grow: 1; /* fill up available space + push the footer down */
+}
+
+inner-column {
+	display: block;
+	width: 98%;
+	max-width: var(--standard); /* could be a variable in settings */
+	margin-right: auto;
+	margin-left: auto;
+	padding: 40px 10px; /* a loose default */
+
+}
+
+/*.site-header {
+	position: sticky;
+	top: 0;
+	z-index: 5;
+}*/
+
+
+inner-column.tight {
+	max-width: var(--tight);
+}
+
+
+inner-column.wide {
+	max-width: var(--wide);
+}

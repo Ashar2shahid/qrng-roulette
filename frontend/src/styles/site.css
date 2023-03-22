@@ -1,0 +1,38 @@
+@import "preset.css";
+
+@import "setup.css";
+
+@import "settings.css";
+@import "developer-styles.css";
+
+@import "structure.css";
+
+@import "typography.css";
+
+@import "animation.css";
+@import "components.css";
+@import "forms.css";
+
+@import "modules.css";
+
+body {
+  background-color: var(--paper);
+  background-image: url("../assets/images/wall-bg.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-blend-mode: darken;
+
+  overflow-x: hidden;
+
+  padding-bottom: 250px;
+  cursor: url("../assets/images/neon-cursor.cur"), auto;
+  user-select: none;
+}
+
+.hide {
+  display: none !important;
+}
+
+label {
+  user-select: none;
+}

@@ -1,0 +1,65 @@
+inner-column {
+  display: grid;
+  gap: 40px;
+  justify-items: center;
+  margin-top: 20px;
+}
+roulette-module {
+  display: grid;
+  justify-items: center;
+  justify-self: stretch;
+  gap: 40px;
+  position: relative;
+}
+numbers-grid {
+  order: 2;
+}
+@media (min-width: 850px) {
+  roulette-module {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    gap: 40px;
+  }
+  numbers-grid {
+    order: unset;
+  }
+}
+
+h1.attention-voice {
+  max-width: 800px;
+  /*display: flex;*/
+  position: relative;
+}
+
+h1.attention-voice::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background-color: white;
+
+  width: 100%;
+  height: 3px;
+
+  box-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,
+    0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+
+  will-change: filter, color;
+  filter: saturate(60%);
+  animation: colorFLicker steps(100) 5s infinite;
+}
+
+h1 span {
+  /*filter: url(#glow);*/
+
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,
+    0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+
+  will-change: filter, color;
+  filter: saturate(60%);
+  animation: colorFLicker steps(100) 40s;
+}
+
+/*number chart*/

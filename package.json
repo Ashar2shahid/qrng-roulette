@@ -1,0 +1,22 @@
+{
+  "name": "qrng-roulette",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "contracts",
+    "frontend"
+  ],
+  "dependencies": {
+    "@walletconnect/encoding": "1.0.2"
+  },
+  "scripts": {
+    "dev": "yarn workspace qrng-roulette-frontend vite",
+    "host": "yarn workspace qrng-roulette-frontend vite --host",
+    "build": "yarn workspace qrng-roulette-frontend vite build",
+    "preview": "yarn workspace qrng-roulette-frontend vite build && vite preview",
+    "deploy": "yarn workspace qrng-roulette-frontend vite build && cp frontend/dist/index.html frontend/dist/200.html && yarn workspace qrng-roulette-frontend surge dist",
+    "build-contracts": "yarn workspace qrng-roulette-contracts hardhat compile",
+    "deploy-contracts": "yarn workspace qrng-roulette-contracts hardhat deploy --network $NETWORK"
+  }
+}

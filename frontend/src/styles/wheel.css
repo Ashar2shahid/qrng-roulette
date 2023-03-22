@@ -1,0 +1,162 @@
+wheel-module {
+  align-self: center;
+  position: relative;
+  justify-self: stretch;
+}
+
+svg {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  stroke-linejoin: round;
+  stroke-miterlimit: 2;
+}
+
+svg #centre-circle {
+  display: none;
+}
+
+svg.wheel text {
+  font-size: 39.34px;
+  font-family: Tourney, sans-serif-Medium, Tourney;
+}
+
+#red-color :is(path, text) {
+  fill: #f653a2;
+}
+
+#blue-color :is(path, text) {
+  fill: #52b2ed;
+}
+
+#white-slices :is(path, text) {
+  filter: url(#fil1);
+}
+
+#white-slices #red > * {
+  /*fill: var(--red);*/
+}
+
+#white-slices path {
+  fill: var(--paper);
+}
+
+#white-slices .selected :is(path, text) {
+  fill: hsla(144, 100%, 40%, 1) !important;
+}
+#white-slices .selected {
+  display: block !important;
+}
+
+#color-slices .selected > * {
+  fill: hsla(144, 100%, 100%, 1) !important;
+}
+
+/*spin button*/
+.button#spin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 23%;
+  font-weight: 800;
+}
+
+button#spin .spin-svg {
+  fill: white;
+  fill-rule: nonzero;
+}
+
+button#spin .spin-svg #back-spin {
+  filter: url(#glow-spin);
+  fill: var(--green);
+}
+
+button#spin.pointer-event {
+  pointer-events: none;
+  cursor: pointer;
+}
+button#spin.pointer-event:hover {
+  filter: saturate(0%);
+}
+
+#spin-button {
+  overflow: visible !important;
+}
+
+div.spin-text {
+  width: 100%;
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+div.spin-text span {
+  color: white;
+  font-family: Tourney, sans-serif, sans-serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 40px;
+
+  text-shadow: 0 0 10px, 0 0 20px, 0 0 40px, 0 0 80px;
+}
+
+#blue-arrow {
+  fill: var(--blue);
+  filter: url(#outer-glow-24);
+}
+
+#outline-stroke {
+  fill: none;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  stroke-width: 3px;
+}
+
+#blue-circle {
+  fill: var(--paper);
+  fill-rule: evenodd;
+}
+
+#red-arrow {
+  fill: var(--red);
+  filter: url(#outer-glow-25);
+}
+
+div.result {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5rem;
+  font-weight: 100;
+  text-shadow: 0 0 10px var(--color), 0 0 20px var(--color),
+    0 0 40px var(--color), 0 0 80px var(--color);
+}
+
+div.result.red {
+  --color: var(--red);
+  color: var(--red);
+}
+
+div.result.blue {
+  --color: var(--blue);
+  color: var(--blue);
+}
+
+div.result.green {
+  --color: var(--green);
+  color: var(--green);
+}
+
+#zeros-circle path {
+  display: none !important;
+}
+
+#zeros-circle {
+  fill: var(--green);
+}

@@ -1,0 +1,213 @@
+/*arrow*/
+info-module {
+  grid-column-start: 2;
+  position: relative;
+  grid-template-columns: 1fr;
+  display: grid;
+  justify-self: stretch;
+}
+
+svg#arrow-svg {
+  position: absolute;
+  max-width: 90px;
+  top: -150px;
+  left: 0px;
+  overflow: visible;
+}
+
+arrow-svg path {
+}
+
+.arrow-2 {
+  filter: url(#outer-glow-24);
+}
+
+.arrow-3 {
+  filter: url(#outer-glow-25);
+  fill: #fff !important;
+}
+
+.arrow-1 {
+  filter: url(#outer-glow-23);
+}
+
+/*choose*/
+choose-box {
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  outline: 3px solid white;
+  padding: 20px;
+  box-shadow: 0 0 5px, 0 0 10px, 0 0 25px;
+  text-shadow: 0 0 10px, 0 0 20px, 0 0 30px;
+}
+
+.or-text,
+.choose-text {
+  fill: #55addd;
+  font-size: 54px;
+  font-family: Tourney, sans-serif;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.or-text {
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.odd-or-even-text,
+.number-text,
+.color-text {
+  color: var(--red);
+  font-family: Tourney, sans-serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 32px;
+}
+
+.odd-or-even-text .or-text {
+  color: var(--red);
+}
+
+.or-text {
+  font-size: 14px;
+}
+
+/*winner*/
+results-box {
+  width: 100%;
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  outline: 3px solid white;
+  padding: 20px;
+  box-shadow: 0 0 5px, 0 0 10px, 0 0 25px;
+  text-shadow: 0 0 5px, 0 0 10px, 0 0 20px;
+}
+
+results-box .congrats-text {
+  fill: #55addd;
+  font-family: Tourney, sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+results-box .congrats-text span {
+  font-size: 40px;
+}
+
+.play-again {
+  font-family: Tourney, sans-serif;
+  font-weight: 100;
+  font-style: italic;
+  color: var(--red);
+  font-size: 32px;
+  outline: 3px solid var(--red);
+  padding: 10px;
+  box-shadow: 0 0 5px, 0 0 10px, 0 0 25px;
+  text-shadow: 0 0 10px, 0 0 20px, 0 0 30px;
+}
+
+@media (min-width: 580px) and (max-width: 850px) {
+  .choose-text {
+    font-size: 30px;
+  }
+
+  choose-box,
+  results-box {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+  results-box .congrats-text {
+    display: grid;
+  }
+
+  roulette-module {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  wheel-module {
+    grid-column: span 2;
+  }
+
+  info-module {
+    grid-column: 1 / 2;
+  }
+
+  numbers-grid {
+    grid-column: 2 / 3;
+    transform: scale(1);
+  }
+
+  svg#arrow-svg {
+    top: -15px;
+    left: unset;
+    right: -9vw;
+    transform: rotateY(200deg) rotate(-45deg) scale(0.7);
+  }
+}
+
+@media (max-width: 580px) {
+  info-module {
+    grid-column-start: unset;
+    transform: scale(0.5);
+    justify-content: center;
+    max-width: 90vw;
+    margin: 0 auto;
+    /*width: 98.5%;*/
+  }
+
+  roulette-module {
+    gap: 0px;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  h1.attention-voice span {
+    font-size: 3rem;
+  }
+
+  svg#arrow-svg {
+    top: unset;
+    bottom: -100px;
+    transform: rotateZ(180deg) rotate(45deg);
+  }
+
+  div.result {
+    font-size: 4rem;
+  }
+
+  results-box h1 {
+    display: grid;
+    gap: 10px;
+    justify-items: center;
+  }
+
+  results-box button {
+    width: 100%;
+  }
+  results-box {
+    gap: 120px;
+  }
+  results-box .congrats-text {
+    gap: 60px;
+  }
+}
+
+@media (max-width: 370px) {
+}

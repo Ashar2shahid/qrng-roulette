@@ -1,0 +1,46 @@
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+} /* https://www.paulirish.com/2012/box-sizing-border-box-ftw */
+
+a {
+	display: block;
+	text-decoration: none;
+	color: inherit;
+}
+
+p a {
+	display: inline;
+	color: blue;
+	text-decoration: underline;
+}
+
+picture {
+	display: block;
+	overflow: hidden;
+}
+
+img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+svg {
+  display: block;
+  width: 100%;
+}
+:where(:not(:defined)) {
+	/*border: 3px solid blue;*/
+	display: block;
+}
+
+
+code {
+    display: block;
+    background-color: black;
+    padding: 10px;
+}

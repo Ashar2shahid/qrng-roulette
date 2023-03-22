@@ -1,0 +1,27 @@
+{
+  "name": "qrng-roulette-contracts",
+  "license": "MIT",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "hardhat compile",
+    "deploy": "hardhat deploy --network $NETWORK",
+    "fund": "hardhat deploy --tags fund --network $NETWORK"
+  },
+  "dependencies": {
+    "@api3/airnode-admin": "0.10.0",
+    "@api3/airnode-protocol": "0.10.0",
+    "@openzeppelin/contracts": "4.8.1"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.4",
+    "@nomiclabs/hardhat-waffle": "^2.0.2",
+    "chai": "^4.3.6",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.5.4",
+    "hardhat": "^2.8.3",
+    "hardhat-deploy": "^0.10.6",
+    "prettier": "^2.6.0",
+    "prettier-plugin-solidity": "^1.0.0-beta.19"
+  }
+}

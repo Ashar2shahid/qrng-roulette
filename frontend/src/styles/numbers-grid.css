@@ -1,0 +1,105 @@
+numbers-grid {
+  color: white;
+  display: grid;
+  grid-template-columns: 0.2fr 0.2fr 0.6fr;
+  gap: 5px;
+  transform: scale(0.9);
+}
+
+numbers-grid zero-number {
+  grid-column: 1 / end;
+}
+numbers-grid zero-number label {
+  width: 98.5%;
+  border-color: white;
+}
+numbers-grid label {
+  padding: 30px;
+
+  border: 1px solid var(--red);
+  position: relative;
+  box-shadow: 0px 0px 5px var(--red);
+}
+numbers-grid #odd + label,
+numbers-grid #second-half + label,
+numbers-grid #third-12 + label,
+numbers-grid #blue-check + label {
+  border: 1px solid var(--blue);
+  box-shadow: 0px 0px 5px var(--blue);
+}
+numbers-grid #second-12 + label {
+  border: 1px solid var(--blue);
+  box-shadow: 3px 0px 5px var(--red), -3px 0px 5px var(--blue);
+}
+
+numbers-grid label:hover {
+  box-shadow: 0px 0px 20px var(--green) !important;
+  cursor: url("../assets/images/neon-pointer.cur"), auto;
+}
+
+numbers-grid input:checked + label::after,
+numbers-grid input:checked + label::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 20px var(--green);
+
+  z-index: -99;
+}
+
+numbers-grid span {
+  font-family: Tourney, sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+}
+
+numbers-grid input:checked + label span {
+  text-shadow: 0 0 10px var(--green), 0 0 20px var(--green),
+    0 0 40px var(--green), 0 0 80px var(--green);
+  color: var(--green);
+}
+
+numbers-grid input {
+  display: none;
+}
+
+numbers-grid .numbers {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  order: 2;
+  gap: 5px;
+}
+
+numbers-grid .chunks {
+  display: grid;
+  gap: 5px;
+}
+numbers-grid .chunks label {
+  width: 100%;
+  height: 100%;
+}
+
+numbers-grid .chunks span {
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
+}
+
+.halves#red-check + label {
+  background-color: var(--red);
+}
+.halves#blue-check + label {
+  background-color: var(--blue);
+}
+
+numbers-grid label.blue {
+  border-color: var(--blue);
+  box-shadow: 0px 0px 5px var(--blue);
+}

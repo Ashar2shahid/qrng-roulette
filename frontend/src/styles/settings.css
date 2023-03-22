@@ -1,0 +1,26 @@
+	
+html {
+
+	--standard: 1140px;
+	--tight: 800px;
+	--wide: 1400px;
+
+
+	--black: #111111;
+	--white: hsla(0, 0%, 100%, 1.00);
+
+	--neutral-stuffs: hsla(0, 0%, 46%, 1.00);
+
+	--red:  #f653a2;
+	--blue:  #52b2ed;
+	--green:  hsla(144, 100%, 41%, 1.00);
+
+	--shadow: rgba(0,0,0,.8);
+
+	--corners: 10px; /* or whatevers */
+
+	--paper: hsla(240, 100%, 13%, 1.00);
+	--ink: var(--black);
+
+}
+

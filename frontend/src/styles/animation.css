@@ -1,0 +1,918 @@
+@keyframes blackout-in {
+  from {
+    opacity: 0;
+    filter: grayscale(100%);
+    background-color: black;
+  }
+  to {
+    opacity: 1;
+    filter: grayscale(0%);
+    background-color: var(--paper);
+  }
+}
+
+body {
+  animation: blackout-in 3s linear forwards;
+}
+
+@keyframes flicker-in-2 {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0;
+    text-shadow: none;
+  }
+  10.1% {
+    opacity: 1;
+    text-shadow: none;
+  }
+  10.2% {
+    opacity: 0;
+    text-shadow: none;
+  }
+  20% {
+    opacity: 0;
+    text-shadow: none;
+  }
+  20.1% {
+    opacity: 1;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
+  }
+  20.6% {
+    opacity: 0;
+    text-shadow: none;
+  }
+  30% {
+    opacity: 0;
+    text-shadow: none;
+  }
+  30.1% {
+    opacity: 1;
+    text-shadow: 0 0 21px #fff, 0 0 42px #0fa;
+  }
+  30.5% {
+    opacity: 1;
+    text-shadow: 0 0 21px #fff, 0 0 42px #0fa;
+  }
+  30.6% {
+    opacity: 0;
+    text-shadow: none;
+  }
+  45% {
+    opacity: 0;
+    text-shadow: none;
+  }
+  45.1% {
+    opacity: 1;
+    text-shadow: 0 0 21px #fff, 0 0 42px #0fa;
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 21px #fff, 0 0 42px #0fa;
+  }
+  55% {
+    opacity: 1;
+    text-shadow: 0 0 21px #fff, 0 0 42px #0fa;
+  }
+  55.1% {
+    opacity: 0;
+    text-shadow: none;
+  }
+  57% {
+    opacity: 0;
+    text-shadow: none;
+  }
+  57.1% {
+    opacity: 1;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.55),
+      0 0 60px rgba(255, 255, 255, 0.3);
+  }
+  60% {
+    opacity: 1;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.55),
+      0 0 60px rgba(255, 255, 255, 0.3);
+  }
+  60.1% {
+    opacity: 0;
+    text-shadow: none;
+  }
+  65% {
+    opacity: 0;
+    text-shadow: none;
+  }
+  65.1% {
+    opacity: 1;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.55),
+      0 0 60px rgba(255, 255, 255, 0.3), 0 0 100px rgba(255, 255, 255, 0.1);
+  }
+  75% {
+    opacity: 1;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.55),
+      0 0 60px rgba(255, 255, 255, 0.3), 0 0 100px rgba(255, 255, 255, 0.1);
+  }
+  75.1% {
+    opacity: 0;
+    text-shadow: none;
+  }
+  77% {
+    opacity: 0;
+    text-shadow: none;
+  }
+  77.1% {
+    opacity: 1;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.6),
+      0 0 60px rgba(255, 255, 255, 0.4), 0 0 92px #0fa, 0 0 102px #0fa;
+  }
+  85% {
+    opacity: 1;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.6),
+      0 0 60px rgba(255, 255, 255, 0.4), 0 0 92px #0fa, 0 0 102px #0fa;
+  }
+  85.1% {
+    opacity: 0;
+    text-shadow: none;
+  }
+  86% {
+    opacity: 0;
+    text-shadow: none;
+  }
+  86.1% {
+    opacity: 1;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.6),
+      0 0 60px rgba(255, 255, 255, 0.45), 0 0 110px rgba(255, 255, 255, 0.25),
+      0 0 100px rgba(255, 255, 255, 0.1);
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.6),
+      0 0 60px rgba(255, 255, 255, 0.45), 0 0 110px rgba(255, 255, 255, 0.25),
+      0 0 100px rgba(255, 255, 255, 0.1);
+  }
+}
+
+.flicker-in-2 {
+  animation: flicker-in-2 2s linear !important;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+  3% {
+    opacity: 0.4;
+  }
+  6% {
+    opacity: 1;
+  }
+  7% {
+    opacity: 0.4;
+  }
+  8% {
+    opacity: 1;
+  }
+  9% {
+    opacity: 0.4;
+  }
+  10% {
+    opacity: 1;
+  }
+  89% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+@keyframes subtleFlicker {
+  100% {
+    /* Larger blur radius */
+    text-shadow: 0 0 4px var(--green), 0 0 11px white, 0 0 19px var(--green),
+      0 0 40px white, 0 0 80px white, 0 0 90px var(--green), 0 0 100px white,
+      0 0 150px var(--green);
+  }
+  0% {
+    /* A slightly smaller blur radius */
+    text-shadow: 0 0 4px var(--green), 0 0 10px white, 0 0 18px var(--green),
+      0 0 38px white, 0 0 73px var(--green), 0 0 80px white,
+      0 0 94px var(--green), 0 0 140px white;
+  }
+}
+
+.flicker-animation2 {
+  animation: flicker 5s infinite 3s step-end;
+  animation-delay: 2s;
+}
+
+.flicker-animation,
+#back-spin path:nth-of-type(2) {
+  animation: flicker 6s infinite step-end;
+  animation-delay: 2s;
+}
+
+@keyframes pulseGlow {
+  0% {
+    text-shadow: 0px 0px 20px #0d106e;
+  }
+
+  50% {
+    text-shadow: 0px 0px 20px #52b2ed;
+  }
+
+  100% {
+    text-shadow: 0px 0px 20px #0d106e;
+  }
+}
+
+@keyframes neonConnect {
+  0% {
+    text-shadow: 0 0 5px hsla(25, 69%, 27%, 1), 0 0 10px hsla(25, 69%, 27%, 1),
+      0 0 15px hsla(25, 69%, 27%, 1), 0 0 20px hsla(29, 92%, 53%, 1),
+      0 0 35px hsla(29, 92%, 53%, 1), 0 0 40px hsla(29, 92%, 53%, 1),
+      0 0 50px hsla(29, 92%, 53%, 1), 0 0 75px hsla(29, 92%, 53%, 1);
+  }
+  50% {
+    text-shadow: 0 0 5px hsla(25, 69%, 27%, 1), 0 0 5px hsla(25, 69%, 27%, 1),
+      0 0 15px hsla(25, 69%, 27%, 1), 0 0 10px hsla(29, 92%, 53%, 1),
+      0 0 35px hsla(29, 92%, 53%, 1), 0 0 20px hsla(29, 92%, 53%, 1),
+      0 0 25px hsla(29, 92%, 53%, 1), 0 0 36px hsla(29, 92%, 53%, 1);
+  }
+
+  100% {
+    text-shadow: 0 0 5px hsla(25, 69%, 27%, 1), 0 0 10px hsla(25, 69%, 27%, 1),
+      0 0 15px hsla(25, 69%, 27%, 1), 0 0 20px hsla(29, 92%, 53%, 1),
+      0 0 35px hsla(29, 92%, 53%, 1), 0 0 40px hsla(29, 92%, 53%, 1),
+      0 0 25px hsla(29, 92%, 53%, 1), 0 0 75px hsla(29, 92%, 53%, 1);
+  }
+}
+
+@keyframes colorFLicker {
+  50% {
+    color: white;
+    filter: saturate(200%) hue-rotate(40deg);
+  }
+}
+
+.button.connect {
+  color: tomato;
+  --color1: orangered;
+  --color2: firebrick;
+  --color3: maroon;
+  --color4: darkred;
+  text-shadow: 0 0 10px var(--color1), 0 0 20px var(--color2),
+    0 0 40px var(--color3), 0 0 80px var(--color4);
+
+  will-change: filter, color;
+  filter: saturate(60%);
+  animation: colorFLicker steps(100) 60s;
+}
+
+@keyframes pulsate {
+  100% {
+    /* Larger blur radius */
+    text-shadow: 0 0 4px, 0 0 11px, 0 0 19px, 0 0 40px, 0 0 80px, 0 0 90px,
+      0 0 100px, 0 0 150px;
+  }
+  0% {
+    /* Smaller blur radius */
+    text-shadow: 0 0 2px, 0 0 4px, 0 0 6px, 0 0 10px, 0 0 45px, 0 0 55px,
+      0 0 70px, 0 0 80px;
+  }
+}
+
+div.result {
+  animation: pulsate 2s infinite alternate;
+  animation-delay: 5s !important;
+}
+/*
+
+.flicker-in-1-animista {
+  animation: flicker-in-1-animista 2s linear both;
+}
+
+@keyframes flicker-in-1-animista {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0;
+  }
+  10.1% {
+    opacity: 1;
+  }
+  10.2% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  20.1% {
+    opacity: 1;
+  }
+  20.6% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  30.1% {
+    opacity: 1;
+  }
+  30.5% {
+    opacity: 1;
+  }
+  30.6% {
+    opacity: 0;
+  }
+  45% {
+    opacity: 0;
+  }
+  45.1% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 1;
+  }
+  55.1% {
+    opacity: 0;
+  }
+  57% {
+    opacity: 0;
+  }
+  57.1% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  60.1% {
+    opacity: 0;
+  }
+  65% {
+    opacity: 0;
+  }
+  65.1% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  75.1% {
+    opacity: 0;
+  }
+  77% {
+    opacity: 0;
+  }
+  77.1% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  85.1% {
+    opacity: 0;
+  }
+  86% {
+    opacity: 0;
+  }
+  86.1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+*/
+
+/*
+*
+*
+*
+*
+
+v
+v
+*
+*
+
+*
+*
+*
+*
+*
+
+*
+*
+*
+v
+
+
+
+
+
+
+OLD*/
+.wobble-hor-bottom {
+  animation: wobble-hor-bottom 0.8s both;
+}
+
+.slide-in-top {
+  animation: slide-in-top 0.5s cubic-bezier(0.54, -0.75, 0, 1.64) both;
+}
+
+.slide-in-left {
+  -webkit-animation: slide-in-left 0.5s cubic-bezier(0.54, -0.75, 0, 1.64) both;
+  animation: slide-in-left 0.5s cubic-bezier(0.54, -0.75, 0, 1.64) both;
+  animation-delay: 0.2s;
+}
+
+bid-card.slide-in-left {
+  -webkit-animation: slide-in-left 0.5s cubic-bezier(0.54, -0.75, 0, 1.64) both;
+  animation: slide-in-left 0.5s cubic-bezier(0.54, -0.75, 0, 1.64) both;
+  animation-delay: 0.3s;
+}
+
+rules-card.slide-in-left {
+  -webkit-animation: slide-in-left 0.5s cubic-bezier(0.54, -0.75, 0, 1.64) both;
+  animation: slide-in-left 0.5s cubic-bezier(0.54, -0.75, 0, 1.64) both;
+  animation-delay: 0.4s;
+}
+
+.slide-in-right {
+  animation: slide-in-right 0.5s cubic-bezier(0.54, -0.75, 0, 1.64) both;
+  animation-delay: 0.5s;
+}
+
+.rotate-center {
+  transition-delay: 1.2s !important;
+  animation: shake-vertical 0.4s ease-in-out 3 forwards !important;
+}
+
+.rotate-center-reverse {
+  transition-delay: 1.2s !important;
+  animation: shake-horizontal 0.4s reverse ease-in-out 3 forwards !important;
+}
+
+.rotate-center::after,
+.rotate-center::before {
+  transition-delay: 1.2s !important;
+}
+
+.heartbeat:nth-of-type(odd) {
+  animation: heartbeat 1.5s ease-in-out infinite both;
+}
+
+.bounce-top {
+  animation-name: bounce-out-top, bounce-in-top;
+  /*animation-iteration-count: infinite;*/
+  animation-duration: 0.75s, 0.75s;
+  animation-delay: 0s, 0.75s;
+  animation-timing-function: ease-out, ease-in;
+}
+
+@keyframes tiltScale {
+  50% {
+    transform: scale(1.3) rotate(-15deg);
+  }
+
+  100% {
+    transform: scale(1.1) rotate(-15deg);
+  }
+}
+
+@keyframes alttiltScale {
+  50% {
+    transform: scale(1.3) rotate(15deg);
+  }
+
+  100% {
+    transform: scale(1.1) rotate(15deg);
+  }
+}
+
+@keyframes jolt {
+  0% {
+    transform: translate(-50%, -50%) skew(20deg) scale(0, 0.1) rotate(-15deg);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) skew(20deg) scale(4, 0.2) rotate(-15deg);
+  }
+
+  100% {
+    transform: translate(-55%, -49%) skewX(20deg) rotateX(40deg) rotateY(10deg)
+      rotateZ(-10deg);
+  }
+}
+
+@keyframes joltalt {
+  0% {
+    transform: translate(-50%, -50%) skew(20deg) scale(0.05, 0.5) rotate(-15deg);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) skew(20deg) scale(0.05, 0.5) rotate(-15deg);
+  }
+
+  100% {
+    transform: translate(-55%, -49%) skewX(20deg) rotateX(40deg) rotateY(10deg)
+      rotateZ(-10deg);
+  }
+}
+
+@keyframes jelly {
+  0% {
+    z-index: 50;
+    transform: translate(-60%, -40%) skewX(20deg) rotateX(40deg) rotateY(10deg)
+      rotateZ(-10deg);
+  }
+
+  50% {
+    z-index: -50;
+    transform: translate(-45%, -55%) skewX(-15deg) translateZ(-30px) scale(0.9);
+  }
+
+  100% {
+    z-index: 50;
+    transform: translate(-60%, -40%) skewX(20deg) rotateX(-40deg)
+      rotateY(-10deg) rotateZ(-15deg);
+  }
+}
+
+@keyframes pickmeBounce {
+  20% {
+    transform: scale(1.05) translate(1px, 1px);
+  }
+
+  40% {
+    transform: scale(1.05) translate(-1px, 1px);
+  }
+
+  60% {
+    transform: scale(1.05) translate(1px, -1px);
+  }
+
+  80% {
+    transform: scale(1.05) translate(-1px, -1px);
+  }
+}
+
+@keyframes passiveSkew {
+  0% {
+    transform: skew(2deg);
+  }
+
+  50% {
+    transform: skew(-2deg);
+  }
+
+  100% {
+    transform: skew(2deg);
+  }
+}
+
+@keyframes bigStamp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(8) rotate(5deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(3) rotate(5deg);
+    opacity: 1;
+  }
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2022-9-13 17:15:32
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+/**
+ * ----------------------------------------
+ * animation rotate-center
+ * ----------------------------------------
+ */
+@keyframes rotate-center {
+  0% {
+    transform: rotate(0);
+    filter: blur(2px);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2022-9-13 17:2:12
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+/**
+ * ----------------------------------------
+ * animation slide-in-top
+ * ----------------------------------------
+ */
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-1000px) skew(30deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0) skew(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-1000px);
+    transform: translateX(-1000px) skew(50deg);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0) skew(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(1000px) skew(-50deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0) skew(0);
+    opacity: 1;
+  }
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2022-9-14 16:59:31
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+/**
+ * ----------------------------------------
+ * animation heartbeat
+ * ----------------------------------------
+ */
+@keyframes heartbeat {
+  from {
+    transform: scale(1);
+    transform-origin: center center;
+    animation-timing-function: ease-out;
+  }
+
+  10% {
+    transform: scale(0.91);
+    animation-timing-function: ease-in;
+  }
+
+  17% {
+    transform: scale(0.98);
+    animation-timing-function: ease-out;
+  }
+
+  33% {
+    transform: scale(0.87);
+    animation-timing-function: ease-in;
+  }
+
+  45% {
+    transform: scale(1);
+    animation-timing-function: ease-out;
+  }
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2022-9-14 20:25:24
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+/**
+ * ----------------------------------------
+ * animation shake-vertical
+ * ----------------------------------------
+ */
+@keyframes shake-vertical {
+  0%,
+  100% {
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+
+  10%,
+  30%,
+  50%,
+  70% {
+    transform: translateY(-8px);
+    filter: blur(2px);
+  }
+
+  20%,
+  40%,
+  60% {
+    transform: translateY(8px);
+  }
+
+  80% {
+    transform: translateY(6.4px);
+  }
+
+  90% {
+    transform: translateY(-6.4px);
+  }
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2022-9-14 20:26:44
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+/**
+ * ----------------------------------------
+ * animation shake-horizontal
+ * ----------------------------------------
+ */
+@keyframes shake-horizontal {
+  0%,
+  100% {
+    transform: translateX(0);
+    filter: blur(0px);
+  }
+
+  10%,
+  30%,
+  50%,
+  70% {
+    transform: translateX(-10px);
+    filter: blur(2px);
+  }
+
+  20%,
+  40%,
+  60% {
+    transform: translateX(10px);
+  }
+
+  80% {
+    transform: translateX(8px);
+  }
+
+  90% {
+    transform: translateX(-8px);
+  }
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2022-9-15 0:37:36
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+/**
+ * ----------------------------------------
+ * animation bounce-in-top
+ * ----------------------------------------
+ */
+@keyframes bounce-in-top {
+  0% {
+    transform: translateY(-120px);
+    animation-timing-function: ease-in;
+  }
+
+  38% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+
+  55% {
+    transform: translateY(-45px);
+    animation-timing-function: ease-in;
+  }
+
+  72% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+
+  81% {
+    transform: translateY(-20px);
+    animation-timing-function: ease-in;
+  }
+
+  90% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+
+  95% {
+    transform: translateY(-8px);
+    animation-timing-function: ease-in;
+  }
+
+  100% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2022-9-15 0:38:31
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+/**
+ * ----------------------------------------
+ * animation bounce-out-top
+ * ----------------------------------------
+ */
+@keyframes bounce-out-top {
+  0% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+
+  5% {
+    transform: translateY(-3px);
+    animation-timing-function: ease-in;
+  }
+
+  15% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+
+  25% {
+    transform: translateY(-8px);
+    animation-timing-function: ease-in;
+  }
+
+  38% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+
+  52% {
+    transform: translateY(-15px);
+    animation-timing-function: ease-in;
+  }
+
+  70% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+
+  85% {
+  }
+
+  100% {
+    transform: translateY(-120px);
+  }
+}
+
+@keyframes wobble-hor-bottom {
+  0%,
+  100% {
+    transform: translateX(0%);
+    transform-origin: 50% 50%;
+  }
+
+  15% {
+    transform: translateX(-30px) rotate(-6deg);
+  }
+
+  30% {
+    transform: translateX(15px) rotate(6deg);
+  }
+
+  45% {
+    transform: translateX(-15px) rotate(-3.6deg);
+  }
+
+  60% {
+    transform: translateX(9px) rotate(2.4deg);
+  }
+
+  75% {
+    transform: translateX(-6px) rotate(-1.2deg);
+  }
+}
