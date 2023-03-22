@@ -1,7 +1,11 @@
 import { useState } from "react";
-
-export default function Thirds(props) {
+import useStore from "/src/store";
+export default function Thirds() {
   const nbsp = "\u00A0";
+
+  const numbers = useStore((state) => state.grid.numbers);
+  const setNumbers = useStore((state) => state.grid.setNumbers);
+  const setUserSelection = useStore((state) => state.grid.setUserSelection);
 
   const [thirds, setThirds] = useState([
     {
@@ -30,16 +34,14 @@ export default function Thirds(props) {
   function toggleNums() {
     const found = thirds.find((third) => third.checked);
 
-    const updatedNums = props.nums.map((num) => {
+    const updatedNums = numbers.map((num) => {
       num.checked = false;
-
       if (found && num.number > found.value - 12 && num.number <= found.value) {
         num.checked = found.checked;
       }
-
       return num;
     });
-    props.setNums(updatedNums);
+    setNumbers(updatedNums);
   }
 
   function checkHandler(name, event) {
@@ -47,7 +49,7 @@ export default function Thirds(props) {
       third.checked = false;
       if (name == third.name) {
         third.checked = event.target.checked;
-        props.setUserSelection(third.name + " third");
+        setUserSelection(third.name + " third");
       }
       return third;
     });
@@ -55,7 +57,7 @@ export default function Thirds(props) {
     toggleNums();
   }
 
-  const checked = props.nums.filter((num) => num.checked);
+  const checked = numbers.filter((num) => num.checked);
   if (checked.length < 12 || checked.length > 12) {
     thirds.map((third) => (third.checked = false));
   }

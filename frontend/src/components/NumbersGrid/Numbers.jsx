@@ -1,25 +1,28 @@
+import useStore from "/src/store";
+
 export default function Numbers(props) {
-  function maxLimit() {
-    const checked = props.nums.filter((num) => num.checked);
-    return checked.length < 1;
-  }
+  const numbers = useStore((state) => state.grid.numbers);
+  const setNumbers = useStore((state) => state.grid.setNumbers);
+  const setUserSelection = useStore((state) => state.grid.setUserSelection);
+
   function toggleChecked(number, event) {
     event.target.checked
-      ? props.setUserSelection(event.target.value)
-      : props.setUserSelection("");
+      ? setUserSelection(event.target.value)
+      : setUserSelection("");
 
-    const updatedNums = props.nums.map((num) => {
+    const updatedNums = numbers.map((num) => {
       num.checked = false;
       if (num.number == number) {
         num.checked = event.target.checked;
       }
       return num;
     });
-    props.setNums(updatedNums);
+    setNumbers(updatedNums);
   }
+
   return (
     <ul className="numbers">
-      {props.nums.map((num) => {
+      {numbers.map((num) => {
         if (num.number != 0) {
           return (
             <li key={`numKey-${num.number}`}>
