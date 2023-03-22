@@ -1,11 +1,13 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
-// import { numbers } from "./numbers";
+import { grid } from "./grid";
+import { spin } from "./wheel";
 
 const useStore = create(
   devtools((set, get) => ({
-    count: 0,
+    spin: spin(set, get),
+    grid: grid(set, get),
 
     errors: [],
     setErrors: (errors) => set({ errors: errors }),
