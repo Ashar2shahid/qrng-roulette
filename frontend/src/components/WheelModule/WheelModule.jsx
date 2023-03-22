@@ -1,27 +1,38 @@
 import Wheel from "./Wheel";
 import SpinButton from "./SpinButton";
 import { useState } from "react";
+import useStore from "/src/store";
 
 export default function WheelModule(props) {
-  const spinTime = 5000;
-  const frameTime = 150;
+  const numbers = useStore((state) => state.grid.numbers);
+  const userSelection = useStore((state) => state.grid.userSelection);
 
-  // bolean telling if wheel has been spinned
-  const [center, setCenter] = useState(0);
+  const spinned = useStore((state) => state.wheel.spinned);
+  const setSpinned = useStore((state) => state.wheel.setSpinned);
+
+  const isSpinning = useStore((state) => state.wheel.isSpinning);
+  const setIsSpinning = useStore((state) => state.wheel.setIsSpinning);
 
   const [colorSliceColor, setColorSliceColor] = useState("");
   const [whiteSliceColor, setWhiteSliceColor] = useState("");
   const [centerResultClass, setCenterResultClass] = useState("");
 
+  const [center, setCenter] = useState(0);
+
+  const spinTime = 5000;
+  const frameTime = 150;
+
+  //functions
+
+  // change color of wheel to match number
   function wheelStrokeColor(num) {
     setColorSliceColor(`var(--${num.color})`);
     setWhiteSliceColor(`var(--${num.color})`);
     setCenterResultClass(num.color);
   }
 
+  //check if user won
   function checkWin(num) {
-    props.setSpinned(true);
-
     if (num.checked) {
       console.log("You Won!");
       props.setBanner(
@@ -36,9 +47,10 @@ export default function WheelModule(props) {
     }
   }
 
-  function highlight(timePassed, num) {
-    setCenter(num.number); //show number in center
-    wheelStrokeColor(num); //change color of wheel to match number
+  //highlight number on wheel
+  function highlight(num) {
+    setCenter(num.number); //set center number
+    wheelStrokeColor(num);
 
     var wheelTexts = document.querySelectorAll("svg.wheel tspan");
     var zeroes = document.querySelector("#zeros-circle");
@@ -52,7 +64,7 @@ export default function WheelModule(props) {
       currentColorSlice.classList.add("selected");
     }
 
-    if (timePassed < spinTime - frameTime) {
+    if (isSpinning) {
       setTimeout(function () {
         if (num.number > 0) {
           currentWhiteSlice.classList.remove("selected");
@@ -60,8 +72,7 @@ export default function WheelModule(props) {
         }
       }, frameTime);
     } else {
-      checkWin(num);
-
+      // checkWin(num);
       // if (num.number == 0) {
       //   wheelTexts.forEach(function (Text) {
       //     Text.classList.add("hide");
@@ -74,27 +85,29 @@ export default function WheelModule(props) {
   function animations(start) {
     // how much time passed from the start?
     var timePassed = Date.now() - start;
-    if (timePassed >= spinTime) {
-      clearInterval(animations); // finish the animation after 2 seconds
-      return;
-    }
-
-    var i = Math.floor(Math.random() * 37);
+    setIsSpinning(true);
+    console.log("isSpinning: ", isSpinning);
 
     // highlight the animation at the moment timePassed
-    highlight(timePassed, props.nums[i]);
+    var i = Math.floor(Math.random() * 37);
+    highlight(numbers[i]);
+
+    if (!isSpinning) {
+      clearInterval(animations); // finish the animation after 2 seconds
+      setSpinned(true);
+      return;
+    }
   }
 
   function buttonHandle() {
-    if (!props.userSelection) {
+    if (!userSelection) {
       alert("please make a choice");
       return;
     }
 
     var start = Date.now(); // remember start time
+    setIsSpinning(true);
     setInterval(animations, frameTime, start);
-    props.setSpinState(true);
-    props.setSpinClass(props.spinButtonClass + " pointer-event");
   }
 
   //return
@@ -106,22 +119,18 @@ export default function WheelModule(props) {
       />
       <button
         onClick={buttonHandle}
-        className={props.spinButtonClass}
+        className={isSpinning || spinned ? "button pointer-event" : "button"}
         id="spin"
       >
-        <SpinButton
-          className={!props.spinState ? "spin-text" : "spin-text hide"}
-        />
-        <div className={!props.spinState ? "spin-text" : "spin-text hide"}>
+        <SpinButton className={!isSpinning ? "spin-text" : "spin-text hide"} />
+        <div className={!isSpinning ? "spin-text" : "spin-text hide"}>
           <span>S</span>
           <span>P</span>
           <span>I</span>
           <span>N</span>
         </div>
         <div
-          className={
-            props.spinState ? `result ${centerResultClass}` : "result hide"
-          }
+          className={isSpinning ? `result ${centerResultClass}` : "result hide"}
         >
           {center}
         </div>
@@ -129,4 +138,4 @@ export default function WheelModule(props) {
     </wheel-module>
   );
 }
-// props.spinState ? "result" : "result hide";
+// isSpinning ? "result" : "result hide";
