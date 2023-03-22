@@ -10,6 +10,7 @@ roulette-module {
   justify-self: stretch;
   gap: 40px;
   position: relative;
+  
 }
 numbers-grid {
   order: 2;

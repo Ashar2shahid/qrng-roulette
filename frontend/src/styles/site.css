@@ -36,3 +36,9 @@ body {
 label {
   user-select: none;
 }
+
+numbers-grid,
+info-module,
+svg.wheel {
+  background-color: var(--paper);
+}

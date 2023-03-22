@@ -256,7 +256,8 @@ body {
   }
 }
 
-.button.connect {
+.button.connect,
+.wallet-wrapper .balance {
   color: tomato;
   --color1: orangered;
   --color2: firebrick;

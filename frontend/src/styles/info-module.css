@@ -5,6 +5,12 @@ info-module {
   grid-template-columns: 1fr;
   display: grid;
   justify-self: stretch;
+
+}
+
+info-module > * {
+	background-color: var(--paper);
+
 }
 
 svg#arrow-svg {

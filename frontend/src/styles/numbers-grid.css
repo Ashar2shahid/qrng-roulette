@@ -4,6 +4,7 @@ numbers-grid {
   grid-template-columns: 0.2fr 0.2fr 0.6fr;
   gap: 5px;
   transform: scale(0.9);
+  background-color: var(--paper);
 }
 
 numbers-grid zero-number {

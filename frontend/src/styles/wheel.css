@@ -2,6 +2,8 @@ wheel-module {
   align-self: center;
   position: relative;
   justify-self: stretch;
+  
+
 }
 
 svg {
@@ -9,7 +11,22 @@ svg {
   clip-rule: evenodd;
   stroke-linejoin: round;
   stroke-miterlimit: 2;
+
 }
+svg.wheel {
+
+	border-radius: 50%;
+	animation: rotate-wheel 300s linear infinite;
+ }
+
+ @keyframes rotate-wheel {
+	from {
+	  transform: rotate(0deg);
+	}
+	to {
+	  transform: rotate(360deg);
+	}
+ }
 
 svg #centre-circle {
   display: none;
@@ -19,6 +36,9 @@ svg.wheel text {
   font-size: 39.34px;
   font-family: Tourney, sans-serif-Medium, Tourney;
 }
+svg.wheel path {
+	/* stroke-width: 100 !important; */
+ }
 
 #red-color :is(path, text) {
   fill: #f653a2;
@@ -56,7 +76,7 @@ svg.wheel text {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+   transform: translate(-50%, -50%) scale(2);
   width: 100%;
   max-width: 23%;
   font-weight: 800;
@@ -93,7 +113,7 @@ div.spin-text {
 
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0.8);
 }
 div.spin-text span {
   color: white;

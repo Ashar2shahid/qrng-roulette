@@ -32,23 +32,39 @@ button:hover {
   transition: 0.3s;
 }
 
-.button.connect {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 99999;
-  font-weight: 200;
-  /*display: none;*/
-  /*transition: 0.2s;*/
-  font-size: 1.2rem;
-}
 
-.button.connect .metamask-icon {
-  max-width: 30px;
-  transform: rotateY(180deg);
-}
 
-@media (min-width: 1300px) {
-  .button.connect {
-  }
+.wallet-wrapper, .connect-wrapper {
+	position: relative;
+	display: flex;
+	gap: 15px;
+	justify-content: space-between;
+	padding: 10px;
+	min-height: 44px;
+ }
+ 
+ .wallet-wrapper button,
+ .connect-wrapper button {
+	/* color: var(--white); */
+	font-size: 1rem;
+	align-items: center;
+
+ }
+
+ 
+ .connect-wrapper button:hover,
+ .connect-wrapper button:focus,
+ .wallet-wrapper button:hover,
+ .wallet-wrapper button:focus {
+	 filter: invert(0.5);
+ }
+ 
+ .wallet-wrapper picture {
+	border-radius: 50%;
+	overflow: hidden;
+	width: 1.5em;
+ }
+ 
+.wallet-wrapper button {
+	text-shadow: 0 0 10px white, 0 0 20px whitesmoke;
 }
