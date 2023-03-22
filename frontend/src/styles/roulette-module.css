@@ -15,7 +15,7 @@ roulette-module {
 numbers-grid {
   order: 2;
 }
-@media (min-width: 850px) {
+@media (min-width: 1050px) {
   roulette-module {
     display: grid;
     grid-template-columns: 0.5fr 1fr;
@@ -24,6 +24,7 @@ numbers-grid {
   numbers-grid {
     order: unset;
   }
+  
 }
 
 h1.attention-voice {

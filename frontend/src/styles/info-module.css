@@ -126,7 +126,7 @@ results-box .congrats-text span {
   text-shadow: 0 0 10px, 0 0 20px, 0 0 30px;
 }
 
-@media (min-width: 580px) and (max-width: 850px) {
+@media (min-width: 580px) and (max-width: 1050px) {
   .choose-text {
     font-size: 30px;
   }
@@ -149,6 +149,7 @@ results-box .congrats-text span {
 
   wheel-module {
     grid-column: span 2;
+		transform: scale(0.8);
   }
 
   info-module {
