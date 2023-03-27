@@ -98,3 +98,67 @@ h1 span {
     --sizeOfNumber: 25px;
   }
 }
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+  transition: all 0.5s ease-in-out;
+}
+
+.loading-screen .container {
+  /* font-size: 2.5rem; */
+  color: var(--paper);
+  /* font-weight: 700; */
+  /* margin-bottom: 1rem; */
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: grid;
+  justify-items: center;
+  width: 100%;
+}
+.loading-screen h1 {
+  font-size: clamp(1.5rem, 8vw, 6rem);
+  color: white;
+}
+
+.loading-screen .container picture {
+  max-width: clamp(30px, 12vw, 300px);
+  /* rotate infinetly in steps */
+  animation: loadingRotate 2s infinite;
+  animation-timing-function: linear;
+  position: relative;
+  mix-blend-mode: multiply;
+  /* top: -30px; */
+}
+.loading-screen picture:nth-last-of-type(1) {
+  animation-delay: 0.6s;
+}
+.loading-screen picture:nth-last-of-type(2) {
+  animation-delay: 0.4s;
+}
+.loading-screen picture:nth-last-of-type(3) {
+  animation-delay: 0.2s;
+}
+
+.loading-screen div.pictures {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@keyframes loadingRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}

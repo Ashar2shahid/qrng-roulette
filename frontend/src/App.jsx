@@ -1,6 +1,7 @@
 import TitleSign from "./components/TitleSign";
 import ConnectButton from "./components/ConnectButton";
 import Roulette from "./components/Roulette";
+import Loading from "./components/Loading";
 
 import { useAccount } from "wagmi";
 
@@ -16,6 +17,7 @@ function App() {
           {isConnected && <Roulette />}
           {!isConnected && <Roulette />}
         </inner-column>
+        <Loading />
       </section>
     </main>
   );
