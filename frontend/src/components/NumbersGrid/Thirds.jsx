@@ -3,35 +3,15 @@ import useStore from "/src/store";
 export default function Thirds() {
   const nbsp = "\u00A0";
 
-  const numbers = useStore((state) => state.grid.numbers);
-  const setNumbers = useStore((state) => state.grid.setNumbers);
-  const setUserSelection = useStore((state) => state.grid.setUserSelection);
+  const { numbers, setNumbers, setSelection } = useStore((state) => state.grid);
 
   const [thirds, setThirds] = useState([
-    {
-      category: "thirds",
-      value: 12,
-      name: "first",
-      checked: false,
-      id: "first-12",
-    },
-    {
-      category: "thirds",
-      value: 24,
-      name: "second",
-      checked: false,
-      id: "second-24",
-    },
-    {
-      category: "thirds",
-      value: 36,
-      name: "third",
-      checked: false,
-      id: "third-36",
-    },
+    { value: 12, name: "first" },
+    { value: 24, name: "second" },
+    { value: 36, name: "third" },
   ]);
 
-  function toggleNums() {
+  function toggleChecked() {
     const found = thirds.find((third) => third.checked);
 
     const updatedNums = numbers.map((num) => {
@@ -49,37 +29,35 @@ export default function Thirds() {
       third.checked = false;
       if (name == third.name) {
         third.checked = event.target.checked;
-        setUserSelection(third.name + " third");
+        setSelection(event.target.value);
       }
       return third;
     });
     setThirds(updatedThirds);
-    toggleNums();
+    toggleChecked();
   }
 
   const checked = numbers.filter((num) => num.checked);
-  if (checked.length < 12 || checked.length > 12) {
+  if (checked.length !== 12) {
     thirds.map((third) => (third.checked = false));
   }
 
   return (
     <ul className="chunks thirds-chunk">
-      {thirds.map((third) => (
-        <li key={`third${third.value}`}>
+      {thirds.map(({ value, name, checked }) => (
+        <li key={`third${value}`}>
           <input
-            className={third.category}
+            className="thirds"
             type="checkbox"
             name="thirds"
-            id={third.id}
-            value={third.name + "12"}
-            checked={third.checked}
-            onChange={(event) => {
-              checkHandler(third.name, event);
-            }}
+            id={`${name}-${value}`}
+            value={`${name}12`}
+            checked={checked}
+            onChange={(event) => checkHandler(name, event)}
           />
-          <label htmlFor={third.id}>
+          <label htmlFor={`${name}-${value}`}>
             <span>
-              {third.name}
+              {name}
               {nbsp}third
             </span>
           </label>

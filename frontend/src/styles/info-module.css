@@ -10,12 +10,12 @@ info-module > * {
 }
 
 svg#arrow-svg {
-  position: fixed;
+  position: absolute;
   max-width: 90px;
-  bottom: -20px;
-  left: 48%;
+  top: -50px;
+  left: -30px;
   overflow: visible;
-  transform: scaleY(-1) rotate(-55deg) translate(-50%, 0);
+  transform: rotate(-40deg);
 }
 
 .arrow-2 {
@@ -85,7 +85,6 @@ results-box {
   display: grid;
   text-align: center;
   align-items: center;
-  justify-content: space-between;
   gap: 15px;
   outline: 3px solid white;
   padding: 20px;
@@ -99,7 +98,7 @@ results-box .congrats-text {
   font-weight: 300;
   font-style: italic;
   font-size: 24px;
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: center;
   gap: 20px;
@@ -136,6 +135,10 @@ results-box .congrats-text span {
   results-box {
     display: flex;
     text-align: start;
+  }
+  results-box .congrats-text {
+    display: flex;
+    gap: 10px;
   }
 
   svg#arrow-svg {
@@ -179,5 +182,34 @@ results-box .congrats-text span {
 @media (max-width: 350px) {
   info-module {
     transform: scale(0.5);
+  }
+}
+
+@media (min-width: 580px) and (max-width: 1050px) {
+  .choose-text {
+    font-size: 30px;
+  }
+
+  choose-box,
+  results-box {
+    display: grid;
+
+    text-align: center;
+    justify-content: center;
+  }
+  results-box .congrats-text {
+    display: grid;
+  }
+
+  info-module {
+    grid-column: 1 / 2;
+    justify-self: center;
+  }
+  svg#arrow-svg {
+    position: absolute;
+    top: -30px;
+    left: unset;
+    right: -70px;
+    transform: rotateY(200deg) rotate(-45deg) scale(0.7);
   }
 }

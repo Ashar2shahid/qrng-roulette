@@ -21,6 +21,8 @@
     "react-animate-on-change": "^2.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.0",
+    "sass": "^1.60.0",
+    "scss": "^0.2.4",
     "wagmi": "^0.9.6",
     "zustand": "^4.3.3"
   },
@@ -28,6 +30,8 @@
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "@vitejs/plugin-react": "^3.0.0",
+    "sass": "^1.57.1",
+    "scss": "^0.2.4",
     "vite": "^4.0.0"
   }
 }

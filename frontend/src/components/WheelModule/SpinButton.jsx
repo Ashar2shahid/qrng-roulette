@@ -9,6 +9,7 @@ export default function SpinButton(props) {
       spinSignLetter.classList.add("flicker-animation");
     }, 400);
   }, []);
+
   return (
     <svg
       id="spin-button"

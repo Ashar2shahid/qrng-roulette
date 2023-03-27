@@ -4,26 +4,82 @@ import { useState } from "react";
 import useStore from "/src/store";
 
 export default function WheelModule(props) {
-  const numbers = useStore((state) => state.grid.numbers);
-  const userSelection = useStore((state) => state.grid.userSelection);
-
-  const spinned = useStore((state) => state.wheel.spinned);
-  const setSpinned = useStore((state) => state.wheel.setSpinned);
-
-  const isSpinning = useStore((state) => state.wheel.isSpinning);
-  const setIsSpinning = useStore((state) => state.wheel.setIsSpinning);
+  const { numbers, selection } = useStore((state) => state.grid);
+  const { spinned, setSpinned, isSpinning, setIsSpinning } = useStore(
+    (state) => state.wheel
+  );
 
   const [colorSliceColor, setColorSliceColor] = useState("");
   const [whiteSliceColor, setWhiteSliceColor] = useState("");
   const [centerResultClass, setCenterResultClass] = useState("");
-
   const [center, setCenter] = useState(0);
-
   const spinTime = 5000;
   const frameTime = 150;
 
   //functions
 
+  function buttonHandle() {
+    if (!selection) {
+      alert("please make a choice");
+      return;
+    }
+
+    var start = Date.now(); // remember start time
+    setIsSpinning(true);
+    console.log("isSpinning: ", isSpinning);
+
+    setInterval(animations, frameTime, start);
+  }
+
+  function animations(start) {
+    var timePassed = Date.now() - start;
+    if (timePassed >= spinTime) {
+      clearInterval(animations); // finish the animation after 2 seconds
+      setIsSpinning(false);
+      setSpinned(true);
+      return;
+    }
+
+    // highlight the animation at the moment timePassed
+    const i = Math.floor(Math.random() * 37);
+    highlight(numbers[i], timePassed);
+  }
+
+  //highlight number on wheel
+  function highlight(num, timePassed) {
+    setCenter(num.number); //set center number
+    wheelStrokeColor(num);
+    const currentWhiteSlice = document.querySelector(
+      `#white-slices #slice-${num.number}`
+    );
+    const currentColorSlice = document.querySelector(
+      `#color-slices #slice-${num.number}-color`
+    );
+
+    if (num.number > 0) {
+      currentWhiteSlice.classList.add("selected");
+      currentColorSlice.classList.add("selected");
+    }
+
+    if (timePassed < spinTime - frameTime) {
+      setTimeout(function () {
+        if (num.number > 0) {
+          currentWhiteSlice.classList.remove("selected");
+          currentColorSlice.classList.remove("selected");
+        }
+      }, frameTime);
+    } else {
+      checkWin(num);
+      // if (num.number == 0) {
+      //  var wheelTexts = document.querySelectorAll("svg.wheel tspan");
+      //  var zeroes = document.querySelector("#zeros-circle");
+      //   wheelTexts.forEach(function (Text) {
+      //     Text.classList.add("hide");
+      //   });
+      //   zeroes.classList.remove("hide");
+      // }
+    }
+  }
   // change color of wheel to match number
   function wheelStrokeColor(num) {
     setColorSliceColor(`var(--${num.color})`);
@@ -33,81 +89,16 @@ export default function WheelModule(props) {
 
   //check if user won
   function checkWin(num) {
-    if (num.checked) {
-      console.log("You Won!");
-      props.setBanner(
-        "<em> CONGRATS </em> <span class='win-lose'>YOU WIN</span>"
-      );
-    } else {
-      console.log("You Lose!");
+    const banner = `
+  	 <em>
+  	 	${num.checked ? "CONGRATS" : "TRY AGAIN"}
+  	 </em>
+  	 <span class="win-lose">
+  	 	${num.checked ? "YOU WIN" : "YOU LOSE"}
+  	 </span>
+  	 `;
 
-      props.setBanner(
-        "<em> TRY AGAIN </em> <span class='win-lose'>YOU LOSE</span>"
-      );
-    }
-  }
-
-  //highlight number on wheel
-  function highlight(num) {
-    setCenter(num.number); //set center number
-    wheelStrokeColor(num);
-
-    var wheelTexts = document.querySelectorAll("svg.wheel tspan");
-    var zeroes = document.querySelector("#zeros-circle");
-
-    if (num.number > 0) {
-      var whiteSliceName = `#white-slices #slice-${num.number}`;
-      var colorSliceName = `#color-slices #slice-${num.number}-color`;
-      var currentWhiteSlice = document.querySelector(whiteSliceName);
-      var currentColorSlice = document.querySelector(colorSliceName);
-      currentWhiteSlice.classList.add("selected");
-      currentColorSlice.classList.add("selected");
-    }
-
-    if (isSpinning) {
-      setTimeout(function () {
-        if (num.number > 0) {
-          currentWhiteSlice.classList.remove("selected");
-          currentColorSlice.classList.remove("selected");
-        }
-      }, frameTime);
-    } else {
-      // checkWin(num);
-      // if (num.number == 0) {
-      //   wheelTexts.forEach(function (Text) {
-      //     Text.classList.add("hide");
-      //   });
-      //   zeroes.classList.remove("hide");
-      // }
-    }
-  }
-
-  function animations(start) {
-    // how much time passed from the start?
-    var timePassed = Date.now() - start;
-    setIsSpinning(true);
-    console.log("isSpinning: ", isSpinning);
-
-    // highlight the animation at the moment timePassed
-    var i = Math.floor(Math.random() * 37);
-    highlight(numbers[i]);
-
-    if (!isSpinning) {
-      clearInterval(animations); // finish the animation after 2 seconds
-      setSpinned(true);
-      return;
-    }
-  }
-
-  function buttonHandle() {
-    if (!userSelection) {
-      alert("please make a choice");
-      return;
-    }
-
-    var start = Date.now(); // remember start time
-    setIsSpinning(true);
-    setInterval(animations, frameTime, start);
+    props.setBanner(banner);
   }
 
   //return
@@ -122,15 +113,21 @@ export default function WheelModule(props) {
         className={isSpinning || spinned ? "button pointer-event" : "button"}
         id="spin"
       >
-        <SpinButton className={!isSpinning ? "spin-text" : "spin-text hide"} />
-        <div className={!isSpinning ? "spin-text" : "spin-text hide"}>
+        <SpinButton
+          className={isSpinning || spinned ? "spin-text hide" : "spin-text"}
+        />
+        <div className={isSpinning || spinned ? "spin-text hide" : "spin-text"}>
           <span>S</span>
           <span>P</span>
           <span>I</span>
           <span>N</span>
         </div>
         <div
-          className={isSpinning ? `result ${centerResultClass}` : "result hide"}
+          className={
+            isSpinning || spinned
+              ? `result ${centerResultClass}`
+              : "result hide"
+          }
         >
           {center}
         </div>

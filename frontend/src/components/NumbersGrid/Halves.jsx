@@ -3,11 +3,7 @@ import useStore from "/src/store";
 
 export default function Halves(props) {
   const nbsp = "\u00A0";
-  const numbers = useStore((state) => state.grid.numbers);
-
-  const setNumbers = useStore((state) => state.grid.setNumbers);
-
-  const setUserSelection = useStore((state) => state.grid.setUserSelection);
+  const { numbers, setNumbers, setSelection } = useStore((state) => state.grid);
 
   const [halves, setHalves] = useState([
     {
@@ -60,7 +56,7 @@ export default function Halves(props) {
     },
   ]);
 
-  function toggleNums() {
+  function toggleChecked() {
     const found = halves.find((half) => half.checked);
 
     const updatedNums = numbers.map((num) => {
@@ -104,12 +100,12 @@ export default function Halves(props) {
       half.checked = false;
       if (value == half.value) {
         half.checked = event.target.checked;
-        setUserSelection(half.value + " half");
+        setSelection(half.value + " half");
       }
       return half;
     });
     setHalves(updatedHalves);
-    toggleNums();
+    toggleChecked();
   }
 
   const checked = numbers.filter((num) => num.checked);

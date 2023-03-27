@@ -1,14 +1,10 @@
 import useStore from "/src/store";
 
-export default function Numbers(props) {
-  const numbers = useStore((state) => state.grid.numbers);
-  const setNumbers = useStore((state) => state.grid.setNumbers);
-  const setUserSelection = useStore((state) => state.grid.setUserSelection);
+export default function Numbers() {
+  const { numbers, setNumbers, setSelection } = useStore((state) => state.grid);
 
   function toggleChecked(number, event) {
-    event.target.checked
-      ? setUserSelection(event.target.value)
-      : setUserSelection("");
+    event.target.checked ? setSelection(event.target.value) : setSelection("");
 
     const updatedNums = numbers.map((num) => {
       num.checked = false;

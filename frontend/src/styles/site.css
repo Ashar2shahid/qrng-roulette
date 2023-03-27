@@ -31,6 +31,9 @@ body {
 .hide {
   display: none !important;
 }
+.pointer-events-none {
+  pointer-events: none !important;
+}
 
 label {
   user-select: none;
@@ -78,17 +81,6 @@ h1 span {
     font-size: 30px;
   }
 
-  choose-box,
-  results-box {
-    display: grid;
-    justify-items: center;
-    text-align: center;
-    justify-content: center;
-  }
-  results-box .congrats-text {
-    display: grid;
-  }
-
   roulette-module {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -99,23 +91,10 @@ h1 span {
     transform: scale(0.8);
   }
 
-  info-module {
-    grid-column: 1 / 2;
-    justify-self: center;
-  }
-
   numbers-grid {
     grid-column: 2 / 3;
     justify-self: start;
 
     --sizeOfNumber: 25px;
-  }
-
-  svg#arrow-svg {
-    position: absolute;
-    top: -30px;
-    left: unset;
-    right: -70px;
-    transform: rotateY(200deg) rotate(-45deg) scale(0.7);
   }
 }
