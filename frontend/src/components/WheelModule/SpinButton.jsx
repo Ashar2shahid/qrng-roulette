@@ -1,4 +1,14 @@
+import { useEffect } from "react";
+
 export default function SpinButton(props) {
+  useEffect(() => {
+    setTimeout(function () {
+      var spinSignLetter = document.querySelector(
+        `div.spin-text span:nth-of-type(${Math.floor(Math.random() * 4) + 1})`
+      );
+      spinSignLetter.classList.add("flicker-animation");
+    }, 400);
+  }, []);
   return (
     <svg
       id="spin-button"
