@@ -24,7 +24,6 @@ body {
 
   overflow-x: hidden;
 
-  padding-bottom: 250px;
   cursor: url("../assets/images/neon-cursor.cur"), auto;
   user-select: none;
 }
@@ -37,8 +36,86 @@ label {
   user-select: none;
 }
 
-numbers-grid,
-info-module,
-svg.wheel {
-  background-color: var(--paper);
+h1.attention-voice {
+  max-width: 800px;
+  /*display: flex;*/
+  position: relative;
+}
+
+h1.attention-voice::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background-color: white;
+
+  width: 100%;
+  height: 3px;
+
+  box-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,
+    0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+
+  will-change: filter, color;
+  filter: saturate(60%);
+  animation: colorFLicker steps(100) 5s infinite;
+}
+
+h1 span {
+  /*filter: url(#glow);*/
+
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,
+    0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+
+  will-change: filter, color;
+  filter: saturate(60%);
+  animation: colorFLicker steps(100) 40s;
+}
+
+@media (min-width: 580px) and (max-width: 1050px) {
+  .choose-text {
+    font-size: 30px;
+  }
+
+  choose-box,
+  results-box {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+  results-box .congrats-text {
+    display: grid;
+  }
+
+  roulette-module {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  wheel-module {
+    grid-column: span 2;
+    transform: scale(0.8);
+  }
+
+  info-module {
+    grid-column: 1 / 2;
+    justify-self: center;
+  }
+
+  numbers-grid {
+    grid-column: 2 / 3;
+    justify-self: start;
+
+    --sizeOfNumber: 25px;
+  }
+
+  svg#arrow-svg {
+    position: absolute;
+    top: -30px;
+    left: unset;
+    right: -70px;
+    transform: rotateY(200deg) rotate(-45deg) scale(0.7);
+  }
 }

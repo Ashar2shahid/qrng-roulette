@@ -194,17 +194,15 @@
 
 .attention-voice span {
   font-family: Tourney, sans-serif;
-  font-size: 5rem;
+  /* font-size: 4rem; */
+  font-size: clamp(2.00rem, calc(1.19rem + 4.07vw), 5.00rem);;
+
   text-transform: capitalize;
   color: white;
   font-style: italic;
 }
 
-@media (min-width: 1500px) {
-  .attention-voice {
-    font-size: clamp(1.25rem, calc(0.57rem + 3.41vw), 3rem);
-  }
-}
+
 
 .notice-voice {
   font-family: Tourney, sans-serif-Medium, Tourney;

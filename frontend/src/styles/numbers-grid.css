@@ -3,8 +3,10 @@ numbers-grid {
   display: grid;
   grid-template-columns: 0.2fr 0.2fr 0.6fr;
   gap: 5px;
-  transform: scale(0.9);
-  background-color: var(--paper);
+  /* transform: scale(0.9); */
+  /* background-color: var(--paper); */
+  align-content: start;
+  --sizeOfNumber: 20px;
 }
 
 numbers-grid zero-number {
@@ -13,9 +15,10 @@ numbers-grid zero-number {
 numbers-grid zero-number label {
   width: 98.5%;
   border-color: white;
+  background-color: var(--paper);
 }
 numbers-grid label {
-  padding: 30px;
+  padding: var(--sizeOfNumber);
 
   border: 1px solid var(--red);
   position: relative;
@@ -54,7 +57,7 @@ numbers-grid input:checked + label::before {
 numbers-grid span {
   font-family: Tourney, sans-serif;
   font-weight: 400;
-  font-size: 30px;
+  font-size: var(--sizeOfNumber);
   position: absolute;
   top: 50%;
   left: 50%;

@@ -18,6 +18,7 @@ svg.wheel {
 
 	border-radius: 50%;
 	animation: rotate-wheel 300s linear infinite;
+	background-color: var(--paper);
  }
 
  @keyframes rotate-wheel {
