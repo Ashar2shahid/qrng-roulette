@@ -50,14 +50,14 @@ export const wheel = (set, get) => ({
     })),
 
   writeContract: async () => {
-    const { userSelection } = get().grid;
+    const { selection } = get().grid;
     const { setLoadingContract } = get().wheel;
 
     const config = await prepareWriteContract({
       abi: tokenContract,
       // address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
       functionName: "betNumber",
-      args: [userSelection],
+      args: [selection],
       overrides: {
         value: ethers.utils.parseEther("0.1"),
       },

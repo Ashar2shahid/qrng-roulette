@@ -4,7 +4,7 @@ const blueNums = [
 ];
 
 export const grid = (set, get) => ({
-  userSelection: null,
+  selection: null,
 
   numbers: numArr.map((num) => {
     const record = {
@@ -27,12 +27,12 @@ export const grid = (set, get) => ({
       },
     })),
 
-  setUserSelection: (userSelection) =>
+  setSelection: (selection) =>
     set((state) => ({
       ...state,
       grid: {
         ...state.grid,
-        userSelection,
+        selection,
       },
     })),
 });
