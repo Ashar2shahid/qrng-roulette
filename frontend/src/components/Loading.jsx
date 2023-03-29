@@ -2,18 +2,20 @@ import { useEffect, useState } from "react";
 import Store from "/src/store";
 
 export default function Loading() {
-  const [state, setState] = useState({ loadingClassname: "loading-screen" });
+  const [state, setState] = useState({
+    loadingClassname: "loading-screen hide",
+  });
 
-  useEffect(
-    () => {
-      if (false) {
-        setState({ loadingClassname: "loading-screen" });
-      } else {
-        setState({ loadingClassname: "loading-screen hide" });
-      }
-    }
-    //   [isResetLoading.status, isTicketLoading.status]
-  );
+  //   useEffect(
+  //     () => {
+  //       if (false) {
+  //         setState({ loadingClassname: "loading-screen" });
+  //       } else {
+  //         setState({ loadingClassname: "loading-screen hide-loading" });
+  //       }
+  //     }
+  //     //   [isResetLoading.status, isTicketLoading.status]
+  //   );
 
   return (
     <div className={state.loadingClassname}>

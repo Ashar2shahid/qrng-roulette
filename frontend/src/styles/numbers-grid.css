@@ -2,18 +2,20 @@ numbers-grid {
   color: white;
   display: grid;
   grid-template-columns: 0.2fr 0.2fr 0.6fr;
-  gap: 5px;
+  --grid-gap: 5px;
+  gap: var(--grid-gap);
   /* transform: scale(0.9); */
-  /* background-color: var(--paper); */
+  background-color: var(--paper);
   align-content: start;
   --sizeOfNumber: 20px;
 }
 
 numbers-grid zero-number {
-  grid-column: 1 / end;
+  grid-column: 1 / -1;
+  display: grid;
 }
 numbers-grid zero-number label {
-  width: 98.5%;
+  /* width: 98.5%; */
   border-color: white;
   background-color: var(--paper);
 }
@@ -79,12 +81,12 @@ numbers-grid .numbers {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   order: 2;
-  gap: 5px;
+  gap: var(--grid-gap);
 }
 
 numbers-grid .chunks {
   display: grid;
-  gap: 5px;
+  gap: var(--grid-gap);
 }
 numbers-grid .chunks label {
   width: 100%;

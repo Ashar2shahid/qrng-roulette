@@ -39,7 +39,7 @@ choose-box {
   align-items: center;
   justify-content: center;
   gap: 15px;
-  outline: 3px solid white;
+  border: 3px solid white;
   padding: 20px;
   box-shadow: 0 0 5px, 0 0 10px, 0 0 25px;
   text-shadow: 0 0 10px, 0 0 20px, 0 0 30px;
@@ -86,7 +86,7 @@ results-box {
   text-align: center;
   align-items: center;
   gap: 15px;
-  outline: 3px solid white;
+  border: 3px solid white;
   padding: 20px;
   box-shadow: 0 0 5px, 0 0 10px, 0 0 25px;
   text-shadow: 0 0 5px, 0 0 10px, 0 0 20px;
@@ -115,7 +115,7 @@ results-box .congrats-text span {
   font-style: italic;
   color: var(--red);
   font-size: 32px;
-  outline: 3px solid var(--red);
+  border: 3px solid var(--red);
   padding: 10px;
   box-shadow: 0 0 5px, 0 0 10px, 0 0 25px;
   text-shadow: 0 0 10px, 0 0 20px, 0 0 30px;
