@@ -7,6 +7,7 @@ export default function ResultsBox(props) {
 
   function resetRoulette() {
     setSpinned(false);
+
     setNumbers(
       numbers.map((num) => {
         num.checked = false;
