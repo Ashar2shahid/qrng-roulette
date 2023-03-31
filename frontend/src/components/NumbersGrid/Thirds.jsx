@@ -24,12 +24,16 @@ export default function Thirds() {
     setNumbers(updatedNums);
   }
 
-  function checkHandler(name, event) {
+  function changeHandler(name, event) {
     const updatedThirds = thirds.map((third) => {
       third.checked = false;
       if (name == third.name) {
         third.checked = event.target.checked;
-        setSelection(event.target.value);
+        setSelection({
+          value: event.target.value / 12, //contract accepts 1, 2, 3 for thirds
+          type: "third",
+          contractFunction: "betOneThird",
+        });
       }
       return third;
     });
@@ -51,9 +55,9 @@ export default function Thirds() {
             type="checkbox"
             name="thirds"
             id={`${name}-${value}`}
-            value={`${name}12`}
+            value={value}
             checked={checked}
-            onChange={(event) => checkHandler(name, event)}
+            onChange={(event) => changeHandler(name, event)}
           />
           <label htmlFor={`${name}-${value}`}>
             <span>

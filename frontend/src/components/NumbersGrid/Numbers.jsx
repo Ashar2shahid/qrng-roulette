@@ -4,7 +4,13 @@ export default function Numbers() {
   const { numbers, setNumbers, setSelection } = useStore((state) => state.grid);
 
   function toggleChecked(number, event) {
-    event.target.checked ? setSelection(event.target.value) : setSelection("");
+    event.target.checked
+      ? setSelection({
+          value: event.target.value,
+          type: "number",
+          contractFunction: "betNumber",
+        })
+      : setSelection("");
 
     const updatedNums = numbers.map((num) => {
       num.checked = false;

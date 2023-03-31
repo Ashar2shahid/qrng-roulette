@@ -15,9 +15,9 @@ export default function Halves(props) {
       label: "First Half",
     },
     {
-      class: "halves oddEven",
+      class: "halves evenOdd",
       value: 0, //== % 2 == even
-      category: "oddEven",
+      category: "evenOdd",
       checked: false,
       id: "even",
       label: "Even",
@@ -39,9 +39,9 @@ export default function Halves(props) {
       label: "Blue",
     },
     {
-      class: "halves oddEven",
+      class: "halves evenOdd",
       value: 1, //== %2 == odd
-      category: "oddEven",
+      category: "evenOdd",
       checked: false,
       id: "odd",
       label: "Odd",
@@ -73,20 +73,35 @@ export default function Halves(props) {
         num.number <= found.value
       ) {
         num.checked = found.checked;
+        setSelection({
+          value: found.value / 18, //1 or 2 for contract
+          type: "half",
+          contractFunction: "betHalf",
+        });
       }
 
       //check for color
       if (found.category == "color" && num.color == found.value) {
         num.checked = found.checked;
+        setSelection({
+          value: found.value === "blue", //isBlack boolean for contract
+          type: "color",
+          contractFunction: "betColor",
+        });
       }
 
       //check for odd or even
       if (
-        found.category == "oddEven" &&
+        found.category == "evenOdd" &&
         num.number > 0 &&
         num.number % 2 == found.value
       ) {
         num.checked = found.checked;
+        setSelection({
+          value: found.value === 0, //isEven boolean for contract
+          type: "evenOdd",
+          contractFunction: "betEvenOdd",
+        });
       }
 
       return num;
@@ -100,7 +115,6 @@ export default function Halves(props) {
       half.checked = false;
       if (value == half.value) {
         half.checked = event.target.checked;
-        setSelection(half.value + " half");
       }
       return half;
     });
