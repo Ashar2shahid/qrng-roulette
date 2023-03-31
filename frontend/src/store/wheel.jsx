@@ -52,12 +52,13 @@ export const wheel = (set, get) => ({
   writeContract: async () => {
     const { selection } = get().grid;
     const { setLoadingContract } = get().wheel;
+    const { contractAddress } = get();
 
     const config = await prepareWriteContract({
       abi: tokenContract,
-      // address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
-      functionName: "betNumber",
-      args: [selection],
+      address: contractAddress,
+      functionName: selection?.contractFunction, //call function based on selection
+      args: [selection.value],
       overrides: {
         value: ethers.utils.parseEther("0.1"),
       },
