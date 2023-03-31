@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Store from "/src/store";
+import circles from "/src/assets/images/circles.svg";
 
 export default function Loading() {
   const [state, setState] = useState({
@@ -27,13 +28,13 @@ export default function Loading() {
         </h1>
         <div className="pictures">
           <picture>
-            <img src="/src/assets/images/circles.svg" alt="" />
+            <img src={circles} alt="" />
           </picture>
           <picture>
-            <img src="/src/assets/images/circles.svg" alt="" />
+            <img src={circles} alt="" />
           </picture>
           <picture>
-            <img src="/src/assets/images/circles.svg" alt="" />
+            <img src={circles} alt="" />
           </picture>
         </div>
       </div>
