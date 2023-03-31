@@ -5,6 +5,7 @@ import useStore from "/src/store";
 
 export default function WheelModule(props) {
   const { numbers, selection } = useStore((state) => state.grid);
+  //   console.log(selection?.value);
   const { spinned, setSpinned, isSpinning, setIsSpinning } = useStore(
     (state) => state.wheel
   );
@@ -24,7 +25,7 @@ export default function WheelModule(props) {
       return;
     }
 
-    var start = Date.now(); // remember start time
+    let start = Date.now(); // remember start time
     setIsSpinning(true);
     console.log("isSpinning: ", isSpinning);
 
