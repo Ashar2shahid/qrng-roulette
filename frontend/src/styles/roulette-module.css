@@ -17,6 +17,25 @@ numbers-grid {
   order: 2;
 }
 
+@media (min-width: 580px) and (max-width: 1050px) {
+  roulette-module {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  wheel-module {
+    grid-column: span 2;
+    transform: scale(0.8);
+  }
+
+  numbers-grid {
+    grid-column: 2 / 3;
+    justify-self: start;
+
+    --sizeOfNumber: 25px;
+  }
+}
+
 @media (min-width: 1050px) {
   roulette-module {
     display: grid;
@@ -26,6 +45,16 @@ numbers-grid {
 
   numbers-grid {
     order: unset;
+  }
+}
+
+@media (min-width: 1600px) {
+  inner-column {
+    padding-top: 50px;
+  }
+  roulette-module {
+    padding-top: 50px;
+    grid-template-columns: 0.1fr 1fr;
   }
 }
 

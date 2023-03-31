@@ -109,3 +109,12 @@ numbers-grid label.blue {
   border-color: var(--blue);
   box-shadow: 0px 0px 5px var(--blue);
 }
+
+/* ////
+ */
+@media (min-width: 1600px) {
+  numbers-grid {
+    --sizeOfNumber: 27px;
+    align-content: center;
+  }
+}

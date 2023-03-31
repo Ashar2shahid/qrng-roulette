@@ -249,7 +249,7 @@ body {
   }
 }
 
-@keyframes colorFLicker {
+@keyframes colorFlicker {
   50% {
     color: white;
     filter: saturate(200%) hue-rotate(40deg);
@@ -268,7 +268,7 @@ body {
 
   will-change: filter, color;
   filter: saturate(60%);
-  animation: colorFLicker steps(100) 60s;
+  animation: colorFlicker steps(100) 60s;
 }
 
 @keyframes pulsate {

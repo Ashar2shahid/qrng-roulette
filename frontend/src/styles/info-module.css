@@ -213,3 +213,30 @@ results-box .congrats-text span {
     transform: rotateY(200deg) rotate(-45deg) scale(0.7);
   }
 }
+
+@media (min-width: 1600px) {
+  info-module {
+    grid-column: 2 / -1;
+  }
+  info-module > * {
+    display: flex;
+    text-align: left;
+    justify-content: space-around;
+  }
+  result-box .choose-text {
+    justify-content: initial;
+  }
+  svg#arrow-svg {
+    position: absolute;
+    top: -20px;
+    left: unset;
+    left: -100px;
+    transform: rotate(75deg) rotateX(180deg) scale(1.4);
+  }
+
+  .odd-or-even-text,
+  .number-text,
+  .color-text {
+    font-size: 35px;
+  }
+}

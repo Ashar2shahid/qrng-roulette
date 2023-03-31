@@ -12,7 +12,7 @@
     0 2 5 8 11 14 17 20 23 26 29 32 35
       1 4 7 10 13 16 19 22 25 28 31 34
 --------------------------------------------  
- <Even|Odd> ~~ <Black|Red> ~~ <1st|2nd|3rd>
+ <Even|Odd> ~~ <Black|Red> ~~ <1st|2nd> ~~ <1st|2nd|3rd> 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -25,7 +25,7 @@
 /*** @notice on-chain roulette using API3/ANU quantum random numbers.
  *** Immutable after deployment except for setRequestParameters().
  *** CAUTION: NOT AUDITED, NO GUARANTEES OR WARRANTIES PROVIDED WHATSOEVER.
- *** Only supports one bet (single number, black/red, even/odd, or 1st/2nd/3rd of board) per spin.
+ *** Only supports one bet (single number, black/red, even/odd, 1st/2nd or 1st/2nd/3rd of board) per spin.
  *** User places bet by calling applicable payable function, then calls spinRouletteWheel(),
  *** then calls checkIf[BetType]Won() after QRNG airnode responds with spinResult for user
  *** following the applicable chain's minimum confirmations (25 for Optimism)
@@ -217,7 +217,8 @@ contract Roulette is RrpRequesterV0 {
     Color,
     Number,
     EvenOdd,
-    Third
+    Third,
+	 Half
   }
 
   // ~~~~~~~ MAPPINGS ~~~~~~~
@@ -226,6 +227,7 @@ contract Roulette is RrpRequesterV0 {
   mapping(address => bool) public userBetANumber;
   mapping(address => bool) public userBetEvenOdd;
   mapping(address => bool) public userBetThird;
+  mapping(address => bool) public userBetHalf;
   mapping(address => bool) public userToColor;
   mapping(address => bool) public userToEven;
 
@@ -233,6 +235,7 @@ contract Roulette is RrpRequesterV0 {
   mapping(address => uint256) public userToSpinCount;
   mapping(address => uint256) public userToNumber;
   mapping(address => uint256) public userToThird;
+  mapping(address => uint256) public userToHalf;
 
   mapping(bytes32 => bool) expectingRequestWithIdToBeFulfilled;
 
@@ -339,6 +342,8 @@ contract Roulette is RrpRequesterV0 {
       checkIfColorWon(_spin);
     } else if (spinToBetType[_spin] == BetType.EvenOdd) {
       checkIfEvenOddWon(_spin);
+	 } else if (spinToBetType[_spin] == BetType.Half) {
+		checkIfHalfWon(_spin);
     } else if (spinToBetType[_spin] == BetType.Third) {
       checkIfThirdWon(_spin);
     }
@@ -474,6 +479,66 @@ contract Roulette is RrpRequesterV0 {
     emit WinningNumber(_spin, spinResult[_spin] % 37);
     return (spinResult[_spin] % 37);
   }
+
+  // make similar function as above for halves
+    /// @notice submit bet and "1" or "2" for a bet on 1st/2nd/3rd of table, which pays out 2:1 if correct after spin
+  /// @param _halfBet uint 1 or 2 to represent first or second half of table
+  /// @return userToSpinCount[msg.sender] spin count for this msg.sender, to enter in spinRouletteWheel()
+  function betHalf(uint256 _halfBet) external payable returns (uint256) {
+	 require(_halfBet == 1 || _halfBet == 2, "_halfBet not 1 or 2");
+	 require(msg.value >= MIN_BET, "msg.value < MIN_BET");
+	 if (address(this).balance < msg.value * 2) revert HouseBalanceTooLow();
+	 userToCurrentBet[msg.sender] = msg.value;
+	 unchecked {
+		++spinCount;
+	 }
+	 spinToUser[spinCount] = msg.sender;
+	 userToSpinCount[msg.sender] = spinCount;
+	 userToHalf[msg.sender] = _halfBet;
+	 userBetHalf[msg.sender] = true;
+	 spinToBetType[spinCount] = BetType.Half;
+	 _spinRouletteWheel(spinCount);
+	 return (userToSpinCount[msg.sender]);
+  }
+
+  /// @notice for user to check half bet result when spin complete
+  /// @dev unsuccessful bet sends 10% to sponsor wallet to ensure future fulfills, 2% to deployer, rest kept by house
+  function checkIfHalfWon(uint256 _spin) internal returns (uint256) {
+	 address _user = spinToUser[_spin];
+	 if (userToCurrentBet[_user] == 0) revert NoBet();
+	 if (!userBetHalf[_user]) revert NoBet();
+	 if (!spinIsComplete[_spin]) revert SpinNotComplete();
+	 uint256 _result = spinResult[_spin] % 37;
+	 uint256 _halfResult;
+	 if (_result > 0 && _result < 19) {
+		_halfResult = 1;
+	 } else if (_result > 18) {
+		_halfResult = 2;
+	 }
+	 if (spinResult[_spin] == 37) {
+		(bool sent, ) = _user.call{ value: userToCurrentBet[_user] }("");
+		if (!sent) revert ReturnFailed();
+	 } else {}
+	 if (userToHalf[_user] == 1 && _halfResult == 1) {
+		(bool sent, ) = _user.call{ value: userToCurrentBet[_user] * 2 }("");
+		if (!sent) revert HouseBalanceTooLow();
+	 } else if (userToHalf[_user] == 2 && _halfResult == 2) {
+		(bool sent, ) = _user.call{ value: userToCurrentBet[_user] * 2 }("");
+		if (!sent) revert HouseBalanceTooLow();
+	 } else {
+		(bool sent, ) = sponsorWallet.call{ value: userToCurrentBet[_user] / 10 }("");
+		if (!sent) revert TransferToSponsorWalletFailed();
+		(bool sent2, ) = deployer.call{ value: userToCurrentBet[_user] / 50 }("");
+		if (!sent2) revert TransferToDeployerWalletFailed();
+	 }
+	 userToCurrentBet[_user] = 0;
+	 userBetHalf[_user] = false;
+	 emit WinningNumber(_spin, spinResult[_spin] % 37);
+	 return (spinResult[_spin] % 37);
+  }
+
+
+
 
   /** @notice for user to submit a boolean even or odd bet, which pays out 2:1 if correct
    *** reminder that a return of 0 is neither even nor odd in roulette **/
