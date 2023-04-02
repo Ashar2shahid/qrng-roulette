@@ -29,11 +29,11 @@ export default function WheelModule(props) {
       return;
     }
 
-    await spinWheel();
+    //  await spinWheel();
 
     let start = Date.now(); // remember start time
     setIsSpinning(true);
-    console.log("isSpinning: ", isSpinning);
+    //  console.log("isSpinning: ", isSpinning);
 
     setInterval(animations, frameTime, start);
   }
