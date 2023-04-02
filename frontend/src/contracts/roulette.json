@@ -1,44 +1,48 @@
 [
   {
-    "anonymous": false,
     "inputs": [
       {
-        "indexed": true,
-        "internalType": "bytes32",
-        "name": "templateId",
-        "type": "bytes32"
-      },
-      {
-        "indexed": false,
         "internalType": "address",
-        "name": "airnode",
+        "name": "_airnodeRrp",
         "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes32",
-        "name": "endpointId",
-        "type": "bytes32"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes",
-        "name": "parameters",
-        "type": "bytes"
       }
     ],
-    "name": "CreatedTemplate",
-    "type": "event"
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [],
+    "name": "HouseBalanceTooLow",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NoBet",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ReturnFailed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "SpinNotComplete",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "TransferToDeployerWalletFailed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "TransferToSponsorWalletFailed",
+    "type": "error"
   },
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "airnode",
-        "type": "address"
-      },
       {
         "indexed": true,
         "internalType": "bytes32",
@@ -47,12 +51,25 @@
       },
       {
         "indexed": false,
-        "internalType": "string",
-        "name": "errorMessage",
-        "type": "string"
+        "internalType": "uint256",
+        "name": "response",
+        "type": "uint256"
       }
     ],
-    "name": "FailedRequest",
+    "name": "ReceivedUint256",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "requestId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "RequestedUint256",
     "type": "event"
   },
   {
@@ -60,411 +77,199 @@
     "inputs": [
       {
         "indexed": true,
-        "internalType": "address",
-        "name": "airnode",
-        "type": "address"
-      },
-      {
-        "indexed": true,
         "internalType": "bytes32",
         "name": "requestId",
         "type": "bytes32"
       },
       {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "spinNumber",
+        "type": "uint256"
+      },
+      {
         "indexed": false,
+        "internalType": "uint256",
+        "name": "qrngResult",
+        "type": "uint256"
+      }
+    ],
+    "name": "SpinComplete",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "spinNumber",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "winningNumber",
+        "type": "uint256"
+      }
+    ],
+    "name": "WinningNumber",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "MIN_BET",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "airnodeRrp",
+    "outputs": [
+      {
+        "internalType": "contract IAirnodeRrpV0",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bool",
+        "name": "_isBlack",
+        "type": "bool"
+      }
+    ],
+    "name": "betColor",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bool",
+        "name": "_isEven",
+        "type": "bool"
+      }
+    ],
+    "name": "betEvenOdd",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_halfBet",
+        "type": "uint256"
+      }
+    ],
+    "name": "betHalf",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_numberBet",
+        "type": "uint256"
+      }
+    ],
+    "name": "betNumber",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_oneThirdBet",
+        "type": "uint256"
+      }
+    ],
+    "name": "betOneThird",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "blackSpin",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "requestId",
+        "type": "bytes32"
+      },
+      {
         "internalType": "bytes",
         "name": "data",
         "type": "bytes"
       }
     ],
-    "name": "FulfilledRequest",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "airnode",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "sponsor",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "bytes32",
-        "name": "withdrawalRequestId",
-        "type": "bytes32"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "sponsorWallet",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "FulfilledWithdrawal",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "airnode",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "bytes32",
-        "name": "requestId",
-        "type": "bytes32"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "requesterRequestCount",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "chainId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "requester",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes32",
-        "name": "endpointId",
-        "type": "bytes32"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "sponsor",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "sponsorWallet",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "fulfillAddress",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes4",
-        "name": "fulfillFunctionId",
-        "type": "bytes4"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes",
-        "name": "parameters",
-        "type": "bytes"
-      }
-    ],
-    "name": "MadeFullRequest",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "airnode",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "bytes32",
-        "name": "requestId",
-        "type": "bytes32"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "requesterRequestCount",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "chainId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "requester",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes32",
-        "name": "templateId",
-        "type": "bytes32"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "sponsor",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "sponsorWallet",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "fulfillAddress",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes4",
-        "name": "fulfillFunctionId",
-        "type": "bytes4"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes",
-        "name": "parameters",
-        "type": "bytes"
-      }
-    ],
-    "name": "MadeTemplateRequest",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "airnode",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "sponsor",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "bytes32",
-        "name": "withdrawalRequestId",
-        "type": "bytes32"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "sponsorWallet",
-        "type": "address"
-      }
-    ],
-    "name": "RequestedWithdrawal",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "sponsor",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "requester",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "bool",
-        "name": "sponsorshipStatus",
-        "type": "bool"
-      }
-    ],
-    "name": "SetSponsorshipStatus",
-    "type": "event"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address[]",
-        "name": "authorizers",
-        "type": "address[]"
-      },
-      {
-        "internalType": "address",
-        "name": "airnode",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes32",
-        "name": "requestId",
-        "type": "bytes32"
-      },
-      {
-        "internalType": "bytes32",
-        "name": "endpointId",
-        "type": "bytes32"
-      },
-      {
-        "internalType": "address",
-        "name": "sponsor",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "requester",
-        "type": "address"
-      }
-    ],
-    "name": "checkAuthorizationStatus",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "status",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address[]",
-        "name": "authorizers",
-        "type": "address[]"
-      },
-      {
-        "internalType": "address",
-        "name": "airnode",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes32[]",
-        "name": "requestIds",
-        "type": "bytes32[]"
-      },
-      {
-        "internalType": "bytes32[]",
-        "name": "endpointIds",
-        "type": "bytes32[]"
-      },
-      {
-        "internalType": "address[]",
-        "name": "sponsors",
-        "type": "address[]"
-      },
-      {
-        "internalType": "address[]",
-        "name": "requesters",
-        "type": "address[]"
-      }
-    ],
-    "name": "checkAuthorizationStatuses",
-    "outputs": [
-      {
-        "internalType": "bool[]",
-        "name": "statuses",
-        "type": "bool[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "airnode",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes32",
-        "name": "endpointId",
-        "type": "bytes32"
-      },
-      {
-        "internalType": "bytes",
-        "name": "parameters",
-        "type": "bytes"
-      }
-    ],
-    "name": "createTemplate",
-    "outputs": [
-      {
-        "internalType": "bytes32",
-        "name": "templateId",
-        "type": "bytes32"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes32",
-        "name": "requestId",
-        "type": "bytes32"
-      },
-      {
-        "internalType": "address",
-        "name": "airnode",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "fulfillAddress",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes4",
-        "name": "fulfillFunctionId",
-        "type": "bytes4"
-      },
-      {
-        "internalType": "string",
-        "name": "errorMessage",
-        "type": "string"
-      }
-    ],
-    "name": "fail",
+    "name": "fulfillUint256",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -473,70 +278,142 @@
     "inputs": [
       {
         "internalType": "bytes32",
-        "name": "requestId",
+        "name": "",
         "type": "bytes32"
-      },
-      {
-        "internalType": "address",
-        "name": "airnode",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "fulfillAddress",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes4",
-        "name": "fulfillFunctionId",
-        "type": "bytes4"
-      },
-      {
-        "internalType": "bytes",
-        "name": "data",
-        "type": "bytes"
-      },
-      {
-        "internalType": "bytes",
-        "name": "signature",
-        "type": "bytes"
       }
     ],
-    "name": "fulfill",
+    "name": "requestIdToResult",
     "outputs": [
       {
-        "internalType": "bool",
-        "name": "callSuccess",
-        "type": "bool"
-      },
-      {
-        "internalType": "bytes",
-        "name": "callData",
-        "type": "bytes"
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
-    "stateMutability": "nonpayable",
+    "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
       {
         "internalType": "bytes32",
-        "name": "withdrawalRequestId",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "name": "requestIdToSpinCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_airnode",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "_endpointId",
         "type": "bytes32"
       },
       {
-        "internalType": "address",
-        "name": "airnode",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "sponsor",
+        "internalType": "address payable",
+        "name": "_sponsorWallet",
         "type": "address"
       }
     ],
-    "name": "fulfillWithdrawal",
+    "name": "setRequestParameters",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "spinIsComplete",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "spinResult",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "spinToBetType",
+    "outputs": [
+      {
+        "internalType": "enum Roulette.BetType",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "spinToUser",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "topUpSponsorWallet",
     "outputs": [],
     "stateMutability": "payable",
     "type": "function"
@@ -544,138 +421,16 @@
   {
     "inputs": [
       {
-        "internalType": "bytes32[]",
-        "name": "templateIds",
-        "type": "bytes32[]"
+        "internalType": "address",
+        "name": "",
+        "type": "address"
       }
     ],
-    "name": "getTemplates",
-    "outputs": [
-      {
-        "internalType": "address[]",
-        "name": "airnodes",
-        "type": "address[]"
-      },
-      {
-        "internalType": "bytes32[]",
-        "name": "endpointIds",
-        "type": "bytes32[]"
-      },
-      {
-        "internalType": "bytes[]",
-        "name": "parameters",
-        "type": "bytes[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "airnode",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes32",
-        "name": "endpointId",
-        "type": "bytes32"
-      },
-      {
-        "internalType": "address",
-        "name": "sponsor",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "sponsorWallet",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "fulfillAddress",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes4",
-        "name": "fulfillFunctionId",
-        "type": "bytes4"
-      },
-      {
-        "internalType": "bytes",
-        "name": "parameters",
-        "type": "bytes"
-      }
-    ],
-    "name": "makeFullRequest",
-    "outputs": [
-      {
-        "internalType": "bytes32",
-        "name": "requestId",
-        "type": "bytes32"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes32",
-        "name": "templateId",
-        "type": "bytes32"
-      },
-      {
-        "internalType": "address",
-        "name": "sponsor",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "sponsorWallet",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "fulfillAddress",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes4",
-        "name": "fulfillFunctionId",
-        "type": "bytes4"
-      },
-      {
-        "internalType": "bytes",
-        "name": "parameters",
-        "type": "bytes"
-      }
-    ],
-    "name": "makeTemplateRequest",
-    "outputs": [
-      {
-        "internalType": "bytes32",
-        "name": "requestId",
-        "type": "bytes32"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes32",
-        "name": "requestId",
-        "type": "bytes32"
-      }
-    ],
-    "name": "requestIsAwaitingFulfillment",
+    "name": "userBetAColor",
     "outputs": [
       {
         "internalType": "bool",
-        "name": "isAwaitingFulfillment",
+        "name": "",
         "type": "bool"
       }
     ],
@@ -686,33 +441,110 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "airnode",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "sponsorWallet",
+        "name": "",
         "type": "address"
       }
     ],
-    "name": "requestWithdrawal",
-    "outputs": [],
-    "stateMutability": "nonpayable",
+    "name": "userBetANumber",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
       {
         "internalType": "address",
-        "name": "requester",
+        "name": "",
         "type": "address"
       }
     ],
-    "name": "requesterToRequestCountPlusOne",
+    "name": "userBetEvenOdd",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "userBetHalf",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "userBetThird",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "userToColor",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "userToCurrentBet",
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "requestCountPlusOne",
+        "name": "",
         "type": "uint256"
       }
     ],
@@ -723,38 +555,15 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "requester",
-        "type": "address"
-      },
-      {
-        "internalType": "bool",
-        "name": "sponsorshipStatus",
-        "type": "bool"
-      }
-    ],
-    "name": "setSponsorshipStatus",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "sponsor",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "requester",
+        "name": "",
         "type": "address"
       }
     ],
-    "name": "sponsorToRequesterToSponsorshipStatus",
+    "name": "userToEven",
     "outputs": [
       {
         "internalType": "bool",
-        "name": "sponsorshipStatus",
+        "name": "",
         "type": "bool"
       }
     ],
@@ -765,15 +574,15 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "sponsor",
+        "name": "",
         "type": "address"
       }
     ],
-    "name": "sponsorToWithdrawalRequestCount",
+    "name": "userToHalf",
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "withdrawalRequestCount",
+        "name": "",
         "type": "uint256"
       }
     ],
@@ -783,30 +592,62 @@
   {
     "inputs": [
       {
-        "internalType": "bytes32",
-        "name": "templateId",
-        "type": "bytes32"
+        "internalType": "address",
+        "name": "",
+        "type": "address"
       }
     ],
-    "name": "templates",
+    "name": "userToNumber",
     "outputs": [
       {
-        "internalType": "address",
-        "name": "airnode",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes32",
-        "name": "endpointId",
-        "type": "bytes32"
-      },
-      {
-        "internalType": "bytes",
-        "name": "parameters",
-        "type": "bytes"
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
     "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "userToSpinCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "userToThird",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "stateMutability": "payable",
+    "type": "receive"
   }
 ]
