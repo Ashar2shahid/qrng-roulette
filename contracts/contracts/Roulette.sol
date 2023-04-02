@@ -263,7 +263,7 @@ contract Roulette is RrpRequesterV0 {
 
   event RequestedUint256(bytes32 requestId);
   event ReceivedUint256(bytes32 indexed requestId, uint256 response);
-  event SpinComplete(uint256 indexed spinNumber, uint256 qrngResult);
+  event SpinComplete(bytes32 indexed requestId, uint256 indexed spinNumber, uint256 qrngResult);
   event WinningNumber(uint256 indexed spinNumber, uint256 winningNumber);
 
   /// sponsorWallet must be derived from address(this) after deployment
@@ -347,7 +347,7 @@ contract Roulette is RrpRequesterV0 {
     } else if (spinToBetType[_spin] == BetType.Third) {
       checkIfThirdWon(_spin);
     }
-    emit SpinComplete(_spin, spinResult[_spin]);
+    emit SpinComplete(_requestId, _spin, spinResult[_spin]);
   }
 
   /// @dev set parameters for airnodeRrp.makeFullRequest
