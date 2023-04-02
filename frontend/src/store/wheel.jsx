@@ -4,6 +4,8 @@ import {
   prepareWriteContract,
   writeContract,
   waitForTransaction,
+  getContract,
+  watchContractEvent,
 } from "@wagmi/core";
 
 export const wheel = (set, get) => ({
@@ -52,7 +54,14 @@ export const wheel = (set, get) => ({
   writeContract: async () => {
     const { selection } = get().grid;
     const { setLoadingContract } = get().wheel;
+    const { setIsSpinning } = get().wheel;
+    const { setResult } = get().wheel;
     const { contractAddress } = get();
+
+    const roulette = await getContract({
+      address: contractAddress,
+      abi: tokenContract,
+    });
 
     const config = await prepareWriteContract({
       abi: tokenContract,
@@ -60,11 +69,12 @@ export const wheel = (set, get) => ({
       functionName: selection?.contractFunction, //call function based on selection
       args: [selection.value],
       overrides: {
-        value: ethers.utils.parseEther("0.1"),
+        value: ethers.utils.parseEther("0.001"),
       },
     });
 
     setLoadingContract({ status: true, message: "see Wallet" });
+    setIsSpinning(true);
 
     const { hash } = await writeContract(config);
 
@@ -73,11 +83,38 @@ export const wheel = (set, get) => ({
       message: "Waiting for confirmation",
     });
 
-    const { data } = await waitForTransaction({
+    const data = await waitForTransaction({
       hash,
       confirmations: 1,
     });
 
-    setLoadingContract({ status: false, message: "Complete!" });
+    const log = data.logs.find((log) => log.address === contractAddress);
+    const parsedLog = roulette.interface.parseLog(log);
+    const logRequestId = parsedLog.args.requestId;
+    console.log(logRequestId);
+    console.log("waiting for random number to be generated...");
+
+    setLoadingContract({
+      status: true,
+      message: "Spinning wheel...",
+    });
+
+    const unwatch = watchContractEvent(
+      {
+        address: contractAddress,
+        abi: tokenContract,
+        eventName: "SpinComplete",
+      },
+
+      (requestId, spinId, randomNumber) => {
+        console.log(requestId, spinId, randomNumber);
+        if (requestId === logRequestId) {
+          unwatch();
+          const result = ethers.BigNumber.from(randomNumber.mod(37)).toNumber();
+          setResult(result);
+          setLoadingContract({ status: false, message: "Complete!" });
+        }
+      }
+    );
   },
 });
