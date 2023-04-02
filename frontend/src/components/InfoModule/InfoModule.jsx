@@ -15,17 +15,10 @@ export default function InfoModule(props) {
     }, 300);
   }, []);
 
-  if (spinned) {
-    return (
-      <info-module>
-        <ResultsBox resultBanner={props.resultBanner} />
-      </info-module>
-    );
-  } else {
-    return (
-      <info-module>
-        <ChooseBox />
-      </info-module>
-    );
-  }
+  return (
+    <info-module>
+      {!spinned && <ChooseBox />}
+      {spinned && <ResultsBox resultBanner={props.resultBanner} />}
+    </info-module>
+  );
 }

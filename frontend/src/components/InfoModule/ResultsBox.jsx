@@ -1,8 +1,7 @@
 import useStore from "/src/store";
 
 export default function ResultsBox(props) {
-  const numbers = useStore((state) => state.grid.numbers);
-  const setNumbers = useStore((state) => state.grid.setNumbers);
+  const { numbers, setNumbers } = useStore((state) => state.grid);
   const setSpinned = useStore((state) => state.wheel.setSpinned);
 
   function resetRoulette() {
@@ -16,7 +15,7 @@ export default function ResultsBox(props) {
     );
 
     //reset slice class
-    var selectedSlices = document.querySelectorAll(".selected");
+    let selectedSlices = document.querySelectorAll(".selected");
     selectedSlices.forEach(function (slice) {
       slice.classList.remove("selected");
     });
