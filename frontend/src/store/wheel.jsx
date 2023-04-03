@@ -12,6 +12,7 @@ export const wheel = (set, get) => ({
   result: null,
   spinned: false, // bolean telling if wheel has been spinned
   isSpinning: false, // boolean telling if wheel is spinning
+  isWinner: false, // boolean telling if the result is a winner
 
   loadingContract: { status: false, message: "" },
 
@@ -42,6 +43,15 @@ export const wheel = (set, get) => ({
       },
     })),
 
+  setIsWinner: (isWinner) =>
+    set((state) => ({
+      ...state,
+      wheel: {
+        ...state.wheel,
+        isWinner,
+      },
+    })),
+
   setLoadingContract: (loadingContract) =>
     set((state) => ({
       ...state,
@@ -52,10 +62,14 @@ export const wheel = (set, get) => ({
     })),
 
   writeContract: async () => {
-    const { selection } = get().grid;
-    const { setLoadingContract } = get().wheel;
-    const { setIsSpinning } = get().wheel;
-    const { setResult } = get().wheel;
+    const { selection, numbers } = get().grid;
+    const {
+      setLoadingContract,
+      setIsSpinning,
+      setResult,
+      setSpinned,
+      setIsWinner,
+    } = get().wheel;
     const { contractAddress } = get();
 
     const roulette = await getContract({
@@ -73,15 +87,9 @@ export const wheel = (set, get) => ({
       },
     });
 
-    setLoadingContract({ status: true, message: "see Wallet" });
-    setIsSpinning(true);
-
     const { hash } = await writeContract(config);
 
-    setLoadingContract({
-      status: true,
-      message: "Waiting for confirmation",
-    });
+    setIsSpinning(true);
 
     const data = await waitForTransaction({
       hash,
@@ -91,13 +99,6 @@ export const wheel = (set, get) => ({
     const log = data.logs.find((log) => log.address === contractAddress);
     const parsedLog = roulette.interface.parseLog(log);
     const logRequestId = parsedLog.args.requestId;
-    console.log(logRequestId);
-    console.log("waiting for random number to be generated...");
-
-    setLoadingContract({
-      status: true,
-      message: "Spinning wheel...",
-    });
 
     const unwatch = watchContractEvent(
       {
@@ -107,12 +108,36 @@ export const wheel = (set, get) => ({
       },
 
       (requestId, spinId, randomNumber) => {
-        console.log(requestId, spinId, randomNumber);
         if (requestId === logRequestId) {
           unwatch();
           const result = ethers.BigNumber.from(randomNumber.mod(37)).toNumber();
+
+          setIsSpinning(false);
+          setSpinned(true);
           setResult(result);
-          setLoadingContract({ status: false, message: "Complete!" });
+
+          //check if result is a winner, considering all selection types, onethird, onehalf, color, oddeven, number
+          switch (selection.type) {
+            case "number":
+              setIsWinner(result === selection.value);
+              break;
+            case "color":
+              setIsWinner(
+                (numbers[result].color === "blue") === selection.value
+              );
+              break;
+            case "evenOdd":
+              setIsWinner((result % 2 === 0) === selection.value);
+              break;
+            case "third":
+              setIsWinner(Math.floor(result / 12) === selection.value);
+              break;
+            case "half":
+              setIsWinner(Math.floor(result / 18) === selection.value);
+              break;
+            default:
+              break;
+          }
         }
       }
     );
