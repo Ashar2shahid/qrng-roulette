@@ -74,6 +74,8 @@ export default function Halves(props) {
       ) {
         num.checked = found.checked;
         setSelection({
+          multiplier: 2,
+
           value: found.value / 18, //1 or 2 for contract
           type: "half",
           contractFunction: "betHalf",
@@ -84,6 +86,8 @@ export default function Halves(props) {
       if (found.category == "color" && num.color == found.value) {
         num.checked = found.checked;
         setSelection({
+          multiplier: 2,
+
           value: found.value === "blue", //isBlack boolean for contract
           type: "color",
           contractFunction: "betColor",
@@ -98,6 +102,8 @@ export default function Halves(props) {
       ) {
         num.checked = found.checked;
         setSelection({
+          multiplier: 2,
+
           value: found.value === 0, //isEven boolean for contract
           type: "evenOdd",
           contractFunction: "betEvenOdd",

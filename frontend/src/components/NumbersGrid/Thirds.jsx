@@ -33,6 +33,7 @@ export default function Thirds() {
           value: event.target.value / 12, //contract accepts 1, 2, 3 for thirds
           type: "third",
           contractFunction: "betOneThird",
+          multiplier: 3,
         });
       }
       return third;

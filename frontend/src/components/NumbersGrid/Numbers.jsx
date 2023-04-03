@@ -9,6 +9,7 @@ export default function Numbers() {
           value: event.target.value,
           type: "number",
           contractFunction: "betNumber",
+          multiplier: 36,
         })
       : setSelection("");
 
