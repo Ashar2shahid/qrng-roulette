@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import Arrow from "./Arrow";
 
 export default function ChooseBox() {
-  //   const [random, setRandom] = useState(Math.floor(Math.random() * 6));
-
   return (
     <choose-box class="flicker-in-2">
       <h1 className="choose-text">CHOOSE</h1>
