@@ -33,9 +33,6 @@ svg.wheel text {
   font-size: 39.34px;
   font-family: Tourney, sans-serif-Medium, Tourney;
 }
-svg.wheel path {
-  /* stroke-width: 100 !important; */
-}
 
 #red-color :is(path, text) {
   fill: #f653a2;
@@ -54,7 +51,7 @@ svg.wheel path {
 }
 
 #white-slices path {
-  fill: var(--paper);
+  /* fill: var(--paper); */
 }
 
 #white-slices .selected :is(path, text) {

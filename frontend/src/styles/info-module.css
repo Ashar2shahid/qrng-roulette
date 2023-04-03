@@ -107,6 +107,7 @@ results-box .congrats-text {
 
 results-box .congrats-text span {
   font-size: 40px;
+  white-space: nowrap;
 }
 
 .play-again {
@@ -152,7 +153,7 @@ results-box .congrats-text span {
     font-size: 4rem;
   }
 
-  results-box h1 {
+  results-box div {
     display: grid;
     gap: 10px;
     justify-items: center;
@@ -162,10 +163,10 @@ results-box .congrats-text span {
     width: 100%;
   }
   results-box {
-    gap: 120px;
+    gap: 40px;
   }
   results-box .congrats-text {
-    gap: 60px;
+    gap: 40px;
   }
 }
 

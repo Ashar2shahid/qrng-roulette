@@ -3,10 +3,10 @@ export default function Wheel(props) {
     <svg className="wheel" viewBox="350 350 1300 1300">
       <defs>
         <filter id="fil1" x="0" y="0" />
-        <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+        <feGaussianBlur result="blur" stdDeviation="1" />
       </defs>
       <g id="color-slices">
-        <g id="blue-color" data-name="blue">
+        <g id="blue-color" data-color="blue">
           <polygon
             className="cls-13"
             points="999.62 1003.08 999.8 1001.96 999.29 1000.4 999.66 1000.25 1000.1 1000.31 1007.1 1001.51 1000.17 1003.06 999.81 1001.98 999.62 1003.08"
@@ -23,7 +23,7 @@ export default function Wheel(props) {
             className="cls-9"
             points="1000.17 1003.12 1000.16 1001.95 999.31 1000.59 999.68 1000.33 1000.17 1000.31 1006.12 1000.31 1000.79 1002.97 1000.17 1001.96 1000.17 1003.12"
           />
-          <g id="slice-32-color" data-name="slice-32">
+          <g id="slice-32-color" className="slices" data-number="32">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -47,7 +47,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-19-color" data-name="slice-19">
+          <g id="slice-19-color" className="slices" data-number="19">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -71,7 +71,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-21-color" data-name="slice-21">
+          <g id="slice-21-color" className="slices" data-number="21">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -95,7 +95,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-25-color" data-name="slice-25">
+          <g id="slice-25-color" className="slices" data-number="25">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -119,7 +119,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-27-color" data-name="slice-27">
+          <g id="slice-27-color" className="slices" data-number="27">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -143,7 +143,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-36-color" data-name="slice-36">
+          <g id="slice-36-color" className="slices" data-number="36">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -167,7 +167,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-30-color" data-name="slice-30">
+          <g id="slice-30-color" className="slices" data-number="30">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -191,7 +191,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-23-color" data-name="slice-23">
+          <g id="slice-23-color" className="slices" data-number="23">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -215,7 +215,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-5-color" data-name="slice-5">
+          <g id="slice-5-color" className="slices" data-number="5">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -239,7 +239,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-16-color" data-name="slice-16">
+          <g id="slice-16-color" className="slices" data-number="16">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -263,7 +263,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-1-color" data-name="slice-1">
+          <g id="slice-1-color" className="slices" data-number="1">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -287,7 +287,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-14-color" data-name="slice-14">
+          <g id="slice-14-color" className="slices" data-number="14">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -311,7 +311,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-9-color" data-name="slice-9">
+          <g id="slice-9-color" className="slices" data-number="9">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -335,7 +335,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-18-color" data-name="slice-18">
+          <g id="slice-18-color" className="slices" data-name="18">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -359,7 +359,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-7-color" data-name="slice-7">
+          <g id="slice-7-color" className="slices" data-name="7">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -383,7 +383,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-12-color" data-name="slice-12">
+          <g id="slice-12-color" className="slices" data-name="12">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -407,7 +407,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-3-color" data-name="slice-3">
+          <g id="slice-3-color" className="slices" data-name="3">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -431,7 +431,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-34-color" data-name="slice-34">
+          <g id="slice-34-color" className="slices" data-name="34">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -457,7 +457,7 @@ export default function Wheel(props) {
           </g>
         </g>
         <g id="red-color" data-name="red">
-          <g id="slice-26-color" data-name="slice-26">
+          <g id="slice-26-color" className="slices" data-number="26">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -478,7 +478,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-15-color" data-name="slice-15">
+          <g id="slice-15-color" className="slices" data-number="15">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -502,7 +502,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-4-color" data-name="slice-4">
+          <g id="slice-4-color" className="slices" data-number="4">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -526,7 +526,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-2-color" data-name="slice-color">
+          <g id="slice-2-color" className="slices" data-number="color">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -550,7 +550,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-6-color" data-name="slice-6">
+          <g id="slice-6-color" className="slices" data-number="6">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -574,7 +574,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-13-color" data-name="slice-13">
+          <g id="slice-13-color" className="slices" data-number="13">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -598,7 +598,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-11-color" data-name="slice-11">
+          <g id="slice-11-color" className="slices" data-number="11">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -622,7 +622,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-8-color" data-name="slice-8">
+          <g id="slice-8-color" className="slices" data-number="8">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -646,7 +646,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-10-color" data-name="slice-10">
+          <g id="slice-10-color" className="slices" data-number="10">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -670,7 +670,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-24-color" data-name="slice-24">
+          <g id="slice-24-color" className="slices" data-number="24">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -694,7 +694,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-33-color" data-name="slice-33">
+          <g id="slice-33-color" className="slices" data-number="33">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -718,7 +718,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-20-color" data-name="slice-20">
+          <g id="slice-20-color" className="slices" data-number="20">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -742,7 +742,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-31-color" data-name="slice-31">
+          <g id="slice-31-color" className="slices" data-number="31">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -766,7 +766,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-22-color" data-name="slice-22">
+          <g id="slice-22-color" className="slices" data-number="22">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -790,7 +790,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-29-color" data-name="slice-29">
+          <g id="slice-29-color" className="slices" data-number="29">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -814,7 +814,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-28-color" data-name="slice-28">
+          <g id="slice-28-color" className="slices" data-number="28">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -838,7 +838,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-35-color" data-name="slice-35">
+          <g id="slice-35-color" className="slices" data-number="35">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -862,7 +862,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-17-color" data-name="slice-17">
+          <g id="slice-17-color" className="slices" data-number="17">
             <path
               style={{
                 fill: props.colorSliceColor,
@@ -890,7 +890,7 @@ export default function Wheel(props) {
       </g>
       <g id="white-slices">
         <g id="red">
-          <g id="slice-26">
+          <g className="slices" id="slice-26" data-number="26">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -911,7 +911,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-15">
+          <g className="slices" id="slice-15" data-number="15">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -935,7 +935,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-4">
+          <g className="slices" id="slice-4" data-number="4">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -959,7 +959,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-2">
+          <g className="slices" id="slice-2" data-number="2">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -983,7 +983,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-6">
+          <g className="slices" id="slice-6" data-number="6">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1007,7 +1007,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-13">
+          <g className="slices" id="slice-13" data-number="13">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1031,7 +1031,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-11">
+          <g className="slices" id="slice-11" data-number="11">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1055,7 +1055,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-8">
+          <g className="slices" id="slice-8" data-number="8">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1079,7 +1079,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-24">
+          <g className="slices" id="slice-24" data-number="24">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1103,7 +1103,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-33">
+          <g className="slices" id="slice-33" data-number="33">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1127,7 +1127,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-20">
+          <g className="slices" id="slice-20" data-number="20">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1151,7 +1151,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-31">
+          <g className="slices" id="slice-31" data-number="31">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1175,7 +1175,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-22">
+          <g className="slices" id="slice-22" data-number="22">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1199,7 +1199,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-29">
+          <g className="slices" id="slice-29" data-number="29">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1223,7 +1223,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-28">
+          <g className="slices" id="slice-28" data-number="28">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1247,7 +1247,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-35">
+          <g className="slices" id="slice-35" data-number="35">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1271,7 +1271,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-10">
+          <g className="slices" id="slice-10" data-number="10">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1295,7 +1295,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-17">
+          <g className="slices" id="slice-17" data-number="17">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1337,7 +1337,7 @@ export default function Wheel(props) {
             className="cls-10"
             points="1000.17 1003.15 1000.16 1001.97 999.31 1000.62 999.68 1000.36 1000.17 1000.34 1006.12 1000.34 1000.79 1003 1000.17 1001.99 1000.17 1003.15"
           />
-          <g id="slice-32">
+          <g className="slices" id="slice-32" data-number="32">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1361,7 +1361,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-19">
+          <g className="slices" id="slice-19" data-number="19">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1385,7 +1385,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-21">
+          <g className="slices" id="slice-21" data-number="21">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1409,7 +1409,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-25">
+          <g className="slices" id="slice-25" data-number="25">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1433,7 +1433,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-27">
+          <g className="slices" id="slice-27" data-number="27">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1457,7 +1457,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-36">
+          <g className="slices" id="slice-36" data-number="36">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1481,7 +1481,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-30">
+          <g className="slices" id="slice-30" data-number="30">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1505,7 +1505,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-23">
+          <g className="slices" id="slice-23" data-number="23">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1529,7 +1529,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-5">
+          <g className="slices" id="slice-5" data-number="5">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1553,7 +1553,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-16">
+          <g className="slices" id="slice-16" data-number="16">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1577,7 +1577,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-1">
+          <g className="slices" id="slice-1" data-number="1">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1601,7 +1601,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-14">
+          <g className="slices" id="slice-14" data-number="14">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1625,7 +1625,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-9">
+          <g className="slices" id="slice-9" data-number="9">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1649,7 +1649,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-18">
+          <g className="slices" id="slice-18" data-number="18">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1673,7 +1673,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-7">
+          <g className="slices" id="slice-7" data-number="7">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1697,7 +1697,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-12">
+          <g className="slices" id="slice-12" data-number="12">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1721,7 +1721,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-3">
+          <g className="slices" id="slice-3" data-number="3">
             <path
               style={{
                 fill: props.whiteSliceColor,
@@ -1745,7 +1745,7 @@ export default function Wheel(props) {
               </tspan>
             </text>
           </g>
-          <g id="slice-34">
+          <g className="slices" id="slice-34" data-number="34">
             <path
               style={{
                 fill: props.whiteSliceColor,

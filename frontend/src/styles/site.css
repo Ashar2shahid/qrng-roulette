@@ -65,9 +65,8 @@ h1.attention-voice::after {
   animation: colorFlicker steps(100) 5s infinite;
 }
 
-h1 span {
-  /*filter: url(#glow);*/
-
+h1 span,
+.congrats-text span {
   text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 82px #0fa,
     0 0 92px #0fa, 0 0 151px #0fa;
 
