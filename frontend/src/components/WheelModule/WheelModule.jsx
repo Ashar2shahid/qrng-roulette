@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import useStore from "/src/store";
 import howler from "howler";
 import { useAccount } from "wagmi";
+import Bid from "./Bid";
+import gsap from "gsap";
 
 export default function WheelModule() {
   const { isConnected } = useAccount();
@@ -45,12 +47,14 @@ export default function WheelModule() {
   }, [isSpinning, spinned]);
 
   async function buttonHandle() {
-    if (buttonDisabled === "disabled") {
-      shakeConnectButton();
-      return;
-    }
+    shakeConnectButton(buttonDisabled);
+
+    console.log(selection);
+
+    //  return;
+
     if (!selection) {
-      alert("please make a choice");
+      shakeGrid();
       return;
     }
     //  setCenter("See Wallet");
@@ -103,7 +107,48 @@ export default function WheelModule() {
     }
   }
 
-  function shakeConnectButton() {
+  //return
+  return (
+    <wheel-module>
+      <Wheel
+        colorSliceColor={colorSliceColor}
+        whiteSliceColor={whiteSliceColor}
+      />
+
+      {/* <Bid /> */}
+
+      <SpinButton
+        center={center}
+        buttonHandle={buttonHandle}
+        buttonDisabled={buttonDisabled}
+        centerResultClass={centerResultClass}
+      />
+    </wheel-module>
+  );
+}
+
+function shakeGrid() {
+  const grid = gsap.timeline({ paused: true, repeat: 1 });
+  grid
+    .to("numbers-grid", {
+      duration: 0.2,
+      //   color: "var(--green)",
+      filter: "brightness(1.5) saturate(1.5)",
+      rotate: 1,
+      ease: "power2.in",
+    })
+    .to("numbers-grid ", {
+      duration: 0.2,
+      filter: "brightness(1) saturate(1)",
+      //   color: "white",
+      rotate: 0,
+      ease: "power2.in",
+    });
+
+  grid.play();
+}
+function shakeConnectButton(buttonDisabled) {
+  if (buttonDisabled === "disabled") {
     const connectButton = document.querySelector("button.connect");
     //  scroll to top
     console.log(connectButton);
@@ -112,44 +157,6 @@ export default function WheelModule() {
     setTimeout(() => {
       connectButton.classList.remove("wobble-connect");
     }, 1200);
+    return;
   }
-
-  //return
-  return (
-    <wheel-module>
-      <Wheel
-        colorSliceColor={colorSliceColor}
-        whiteSliceColor={whiteSliceColor}
-      />
-      <button
-        onClick={buttonHandle}
-        className={
-          spinned || isSpinning
-            ? "button pointer-event"
-            : `button ${buttonDisabled}`
-        }
-        id="spin"
-      >
-        <SpinButton
-          className={spinned || isSpinning ? "spin-text hide" : "spin-text"}
-        />
-        <div className={spinned || isSpinning ? "spin-text hide" : "spin-text"}>
-          <span>S</span>
-          <span>P</span>
-          <span>I</span>
-          <span>N</span>
-        </div>
-        <div
-          className={
-            spinned || isSpinning
-              ? `result ${centerResultClass}`
-              : "result hide"
-          }
-        >
-          {center}
-        </div>
-      </button>
-    </wheel-module>
-  );
 }
-// isSpinning ? "result" : "result hide";
