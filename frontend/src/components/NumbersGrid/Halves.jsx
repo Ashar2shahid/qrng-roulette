@@ -57,6 +57,7 @@ export default function Halves(props) {
   ]);
 
   function toggleChecked() {
+    props.blink.play();
     const found = halves.find((half) => half.checked);
 
     const updatedNums = numbers.map((num) => {

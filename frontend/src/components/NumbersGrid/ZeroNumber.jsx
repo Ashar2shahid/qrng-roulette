@@ -4,6 +4,7 @@ export default function ZeroNumber(props) {
   const { numbers, setNumbers, setSelection } = useStore((state) => state.grid);
 
   function toggleChecked(number, event) {
+    props.blink.play();
     event.target.checked
       ? setSelection({
           value: event.target.value,

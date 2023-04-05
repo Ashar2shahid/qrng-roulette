@@ -1,9 +1,10 @@
 import useStore from "/src/store";
 
-export default function Numbers() {
+export default function Numbers(props) {
   const { numbers, setNumbers, setSelection } = useStore((state) => state.grid);
 
   function toggleChecked(number, event) {
+    props.blink.play();
     event.target.checked
       ? setSelection({
           value: event.target.value,

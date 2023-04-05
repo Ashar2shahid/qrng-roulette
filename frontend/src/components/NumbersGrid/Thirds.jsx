@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useStore from "/src/store";
-export default function Thirds() {
+export default function Thirds(props) {
   const nbsp = "\u00A0";
 
   const { numbers, setNumbers, setSelection } = useStore((state) => state.grid);
@@ -12,6 +12,8 @@ export default function Thirds() {
   ]);
 
   function toggleChecked() {
+    props.blink.play();
+
     const found = thirds.find((third) => third.checked);
 
     const updatedNums = numbers.map((num) => {
