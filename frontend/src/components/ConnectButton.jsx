@@ -37,7 +37,7 @@ export default function ConnectButton() {
                   <>
                     <div></div>
                     <button
-                      className="button connect"
+                      className="button connect heartbeat"
                       onClick={openConnectModal}
                       type="button"
                     >
