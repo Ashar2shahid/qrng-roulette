@@ -116,28 +116,8 @@ export const wheel = (set, get) => ({
           setSpinned(true);
           setResult(result);
 
-          //check if result is a winner, considering all selection types, onethird, onehalf, color, oddeven, number
-          switch (selection.type) {
-            case "number":
-              setIsWinner(result === selection.value);
-              break;
-            case "color":
-              setIsWinner(
-                (numbers[result].color === "blue") === selection.value
-              );
-              break;
-            case "evenOdd":
-              setIsWinner((result % 2 === 0) === selection.value);
-              break;
-            case "third":
-              setIsWinner(Math.floor(result / 12) === selection.value);
-              break;
-            case "half":
-              setIsWinner(Math.floor(result / 18) === selection.value);
-              break;
-            default:
-              break;
-          }
+          const found = numbers.find((item) => item.number === result);
+          setIsWinner(found.checked);
         }
       }
     );
