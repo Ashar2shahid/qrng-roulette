@@ -4,6 +4,7 @@ export default function ResultsBox() {
   const { numbers, setNumbers, selection } = useStore((state) => state.grid);
   const { setSpinned, isWinner } = useStore((state) => state.wheel);
   let amount = 0.001;
+  let winnings = (amount * selection?.multiplier).toFixed(3);
 
   function resetRoulette() {
     setNumbers(
@@ -28,13 +29,14 @@ export default function ResultsBox() {
         <h1>{isWinner ? "CONGRATS" : "TRY AGAIN"}</h1>
         <div>
           <span class="win-lose">YOU BET</span>
-          <p>
-            {amount} ⨯ {selection?.multiplier ?? 0}
-          </p>
+          <h2 className="color-text">
+            {amount}
+            <span className="or-text">⨯ {selection?.multiplier ?? 0}</span>
+          </h2>
 
-          <p className="attention-voice">
-            YOU GET {((selection?.multiplier ?? 0) * amount).toFixed(3)}
-          </p>
+          <h3 className="color-text">
+            <span className="or-text">YOU GET</span> {isWinner ? winnings : 0}
+          </h3>
         </div>
       </div>
       <button className="play-again" onClick={resetRoulette}>

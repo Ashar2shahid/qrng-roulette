@@ -4,6 +4,9 @@ import Arrow from "./Arrow";
 export default function ChooseBox() {
   return (
     <choose-box class="flicker-in-2">
+      <h1 className="choose-text">BID</h1>
+      <p className="or-text">and</p>
+
       <h1 className="choose-text">CHOOSE</h1>
       <h2 className="number-text">
         ANY <br />
