@@ -32,39 +32,52 @@ button:hover {
   transition: 0.3s;
 }
 
+.wallet-wrapper,
+.connect-wrapper {
+  position: relative;
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  padding: 10px;
+  min-height: 44px;
+}
 
-
-.wallet-wrapper, .connect-wrapper {
-	position: relative;
-	display: flex;
-	gap: 15px;
-	justify-content: space-between;
-	padding: 10px;
-	min-height: 44px;
- }
- 
- .wallet-wrapper button,
- .connect-wrapper button {
-	/* color: var(--white); */
-	font-size: 1rem;
-	align-items: center;
-
- }
-
- 
- .connect-wrapper button:hover,
- .connect-wrapper button:focus,
- .wallet-wrapper button:hover,
- .wallet-wrapper button:focus {
-	 filter: invert(0.5);
- }
- 
- .wallet-wrapper picture {
-	border-radius: 50%;
-	overflow: hidden;
-	width: 1.5em;
- }
- 
 .wallet-wrapper button {
-	text-shadow: 0 0 10px white, 0 0 20px whitesmoke;
+  /* color: var(--white); */
+  font-size: 1rem;
+  align-items: center;
+}
+
+.connect-wrapper button {
+  font-size: 2rem;
+}
+
+.connect-wrapper button:hover,
+.connect-wrapper button:focus,
+.wallet-wrapper button:hover,
+.wallet-wrapper button:focus {
+  filter: invert(0.5);
+}
+
+.wallet-wrapper picture {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 1.5em;
+}
+
+.wallet-wrapper button {
+  text-shadow: 0 0 10px white, 0 0 20px whitesmoke;
+}
+
+button.disabled {
+  /* pointer-events: none; */
+  filter: grayscale(70%);
+  /* strike */
+  text-decoration: line-through;
+}
+
+button.connect.wobble-connect {
+  animation: wobble-hor-bottom 0.6s both;
+  animation-iteration-count: 2;
+  filter: invert(100%);
 }

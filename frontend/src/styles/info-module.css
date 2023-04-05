@@ -110,6 +110,17 @@ results-box .congrats-text span {
   white-space: nowrap;
 }
 
+.congrats-text div {
+  padding-top: 20px;
+  display: grid;
+  gap: 20px;
+}
+.congrats-text div .or-text {
+  font-size: 14px;
+}
+.congrats-text div * {
+  text-shadow: unset !important;
+}
 .play-again {
   font-family: Tourney, sans-serif;
   font-weight: 100;

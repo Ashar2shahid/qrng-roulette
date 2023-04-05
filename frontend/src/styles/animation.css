@@ -1,18 +1,17 @@
 @keyframes blackout-in {
   from {
-    opacity: 0;
-    filter: grayscale(100%);
-    background-color: black;
+    /* opacity: 0; */
+    filter: brightness(0.15);
+    /* background-color: black; */
   }
   to {
-    opacity: 1;
-    filter: grayscale(0%);
-    background-color: var(--paper);
+    /* opacity: 1; */
+    filter: brightness(var(--brightness));
   }
 }
 
-body {
-  animation: blackout-in 3s linear forwards;
+inner-column {
+  animation: blackout-in 6s linear;
 }
 
 @keyframes flicker-in-2 {
