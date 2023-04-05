@@ -5,13 +5,11 @@ import { useState } from "react";
 import useStore from "/src/store";
 
 export default function Roulette() {
-  const [resultBanner, setBanner] = useState("");
-
   return (
     <roulette-module>
       <NumbersGrid />
-      <WheelModule setBanner={setBanner} />
-      <InfoModule resultBanner={resultBanner} />
+      <WheelModule />
+      <InfoModule />
     </roulette-module>
   );
 }

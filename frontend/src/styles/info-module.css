@@ -215,7 +215,7 @@ results-box .congrats-text span {
   }
 }
 
-@media (min-width: 1600px) {
+@media (min-width: 1700px) {
   info-module {
     grid-column: 2 / -1;
   }

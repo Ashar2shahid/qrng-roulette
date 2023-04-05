@@ -40,7 +40,6 @@ numbers-grid {
   roulette-module {
     display: grid;
     grid-template-columns: 0.4fr 1fr 0.4fr;
-    gap: 40px;
   }
 
   numbers-grid {
@@ -48,13 +47,14 @@ numbers-grid {
   }
 }
 
-@media (min-width: 1600px) {
+@media (min-width: 1700px) {
   inner-column {
     padding-top: 50px;
   }
   roulette-module {
     padding-top: 50px;
     grid-template-columns: 0.1fr 1fr;
+    gap: 40px;
   }
 }
 

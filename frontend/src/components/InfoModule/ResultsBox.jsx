@@ -3,6 +3,7 @@ import useStore from "/src/store";
 export default function ResultsBox() {
   const { numbers, setNumbers, selection } = useStore((state) => state.grid);
   const { setSpinned, isWinner } = useStore((state) => state.wheel);
+  let amount = 0.001;
 
   function resetRoulette() {
     setNumbers(
@@ -26,9 +27,13 @@ export default function ResultsBox() {
       <div className="congrats-text">
         <h1>{isWinner ? "CONGRATS" : "TRY AGAIN"}</h1>
         <div>
-          <span class="win-lose">{isWinner ? "YOU WIN" : "YOU LOSE"}</span>
+          <span class="win-lose">YOU BET</span>
           <p>
-            0.001 X {selection.multiplier} = {selection.multiplier * 10} MATIC
+            {amount} ⨯ {selection?.multiplier ?? 0}
+          </p>
+
+          <p className="attention-voice">
+            YOU GET {((selection?.multiplier ?? 0) * amount).toFixed(3)}
           </p>
         </div>
       </div>

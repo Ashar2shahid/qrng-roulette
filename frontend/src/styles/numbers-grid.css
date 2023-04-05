@@ -112,7 +112,7 @@ numbers-grid label.blue {
 
 /* ////
  */
-@media (min-width: 1600px) {
+@media (min-width: 1700px) {
   numbers-grid {
     --sizeOfNumber: 27px;
     align-content: center;
