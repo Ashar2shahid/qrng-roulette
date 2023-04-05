@@ -2,15 +2,26 @@ import Wheel from "./Wheel";
 import SpinButton from "./SpinButton";
 import { useEffect, useState } from "react";
 import useStore from "/src/store";
+import howler from "howler";
+import { useAccount } from "wagmi";
 
-export default function WheelModule(props) {
+export default function WheelModule() {
+  const { isConnected } = useAccount();
+
+  const [buttonDisabled, setButtonDisabled] = useState(
+    isConnected ? "" : "disabled"
+  );
+
+  const neonBlink = new howler.Howl({
+    src: ["/src/assets/sounds/neon-blink.wav"],
+    volume: 0.1,
+  });
+
   const { numbers, selection } = useStore((state) => state.grid);
-  //   console.log(selection?.value);
   const {
     result,
     spinned,
     isSpinning,
-    isWinner,
     writeContract: spinWheel,
   } = useStore((state) => state.wheel);
 
@@ -34,6 +45,10 @@ export default function WheelModule(props) {
   }, [isSpinning, spinned]);
 
   async function buttonHandle() {
+    if (buttonDisabled === "disabled") {
+      shakeConnectButton();
+      return;
+    }
     if (!selection) {
       alert("please make a choice");
       return;
@@ -51,7 +66,8 @@ export default function WheelModule(props) {
   //highlight number on wheel
   function highlight(num) {
     setCenter(num.number); //set center number
-
+    //  num.number % 2 === 0 ? neonBlink.play() : blink.play();
+    neonBlink.play();
     wheelStrokeColor(num);
 
     document
@@ -87,6 +103,17 @@ export default function WheelModule(props) {
     }
   }
 
+  function shakeConnectButton() {
+    const connectButton = document.querySelector("button.connect");
+    //  scroll to top
+    console.log(connectButton);
+    window.scrollTo(0, 0);
+    connectButton.classList.add("wobble-connect");
+    setTimeout(() => {
+      connectButton.classList.remove("wobble-connect");
+    }, 1200);
+  }
+
   //return
   return (
     <wheel-module>
@@ -96,7 +123,11 @@ export default function WheelModule(props) {
       />
       <button
         onClick={buttonHandle}
-        className={spinned || isSpinning ? "button pointer-event" : "button"}
+        className={
+          spinned || isSpinning
+            ? "button pointer-event"
+            : `button ${buttonDisabled}`
+        }
         id="spin"
       >
         <SpinButton
