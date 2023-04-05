@@ -9,17 +9,29 @@ function App() {
   const { isConnected } = useAccount();
 
   return (
-    <main className="App page-content">
-      <section className="page-section">
+    <>
+      <header>
         <ConnectButton />
-        <inner-column>
-          <TitleSign />
-          {isConnected && <Roulette />}
-          {!isConnected && <Roulette />}
-        </inner-column>
-        <Loading />
-      </section>
-    </main>
+      </header>
+      <main className="App page-content">
+        <section className="page-section">
+          {isConnected && (
+            <inner-column>
+              <TitleSign />
+              <Roulette />
+            </inner-column>
+          )}
+          {!isConnected && (
+            <inner-column class="dimmed">
+              <TitleSign />
+              <Roulette />
+            </inner-column>
+          )}
+
+          <Loading />
+        </section>
+      </main>
+    </>
   );
 }
 

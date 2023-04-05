@@ -138,3 +138,14 @@ h1 span,
     transform: rotate(-360deg);
   }
 }
+
+inner-column {
+  --brightness: 1;
+}
+.dimmed {
+  --brightness: 0.14;
+  filter: brightness(var(--brightness));
+}
+.dimmed numbers-grid {
+  pointer-events: none;
+}
