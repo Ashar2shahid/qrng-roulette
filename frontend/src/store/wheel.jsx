@@ -63,13 +63,7 @@ export const wheel = (set, get) => ({
 
   writeContract: async () => {
     const { selection, numbers } = get().grid;
-    const {
-      setLoadingContract,
-      setIsSpinning,
-      setResult,
-      setSpinned,
-      setIsWinner,
-    } = get().wheel;
+    const { setIsSpinning, setResult, setSpinned, setIsWinner } = get().wheel;
     const { contractAddress } = get();
 
     const roulette = await getContract({

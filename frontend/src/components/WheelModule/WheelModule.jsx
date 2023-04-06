@@ -47,16 +47,16 @@ export default function WheelModule() {
   }, [isSpinning, spinned]);
 
   async function buttonHandle() {
-    shakeConnectButton(buttonDisabled);
-
-    console.log(selection);
-
-    //  return;
+    if (buttonDisabled === "disabled") {
+      shakeConnectButton();
+      return;
+    }
 
     if (!selection) {
       shakeGrid();
       return;
     }
+
     //  setCenter("See Wallet");
     await spinWheel();
   }
@@ -146,17 +146,16 @@ function shakeGrid() {
     });
 
   grid.play();
+  return;
 }
-function shakeConnectButton(buttonDisabled) {
-  if (buttonDisabled === "disabled") {
-    const connectButton = document.querySelector("button.connect");
-    //  scroll to top
-    console.log(connectButton);
-    window.scrollTo(0, 0);
-    connectButton.classList.add("wobble-connect");
-    setTimeout(() => {
-      connectButton.classList.remove("wobble-connect");
-    }, 1200);
-    return;
-  }
+function shakeConnectButton() {
+  const connectButton = document.querySelector("button.connect");
+  //  scroll to top
+  console.log(connectButton);
+  window.scrollTo(0, 0);
+  connectButton.classList.add("wobble-connect");
+  setTimeout(() => {
+    connectButton.classList.remove("wobble-connect");
+  }, 1200);
+  return;
 }
