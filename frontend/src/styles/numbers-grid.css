@@ -9,6 +9,7 @@ numbers-grid {
   grid-template-columns: 0.2fr 0.2fr 0.6fr;
   gap: var(--grid-gap);
   align-content: start;
+  position: 5;
 }
 
 numbers-grid label {
