@@ -13,9 +13,6 @@ button {
 .button {
   cursor: url("../assets/images/neon-pointer.cur"), auto !important;
 
-  /*overflow: hidden;*/
-  /*transition: 0.3s;*/
-
   display: flex;
   gap: 10px;
   align-items: center;
@@ -70,9 +67,7 @@ button:hover {
 }
 
 button.disabled {
-  /* pointer-events: none; */
   filter: grayscale(70%);
-  /* strike */
   text-decoration: line-through;
 }
 
@@ -82,10 +77,42 @@ button.connect.wobble-connect {
   filter: invert(100%);
 }
 
-.bid-input {
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
-  color: wheat;
+bid-input {
+  display: grid;
+  grid-column: 1/-1;
+  grid-template-columns: 0.1fr 1fr 0.1fr;
+  justify-items: center;
+  gap: 50px;
+  /* border: 2px solid white; */
+}
+
+bid-input :is(button, p) {
+  font-size: 2rem;
+  font-family: Tourney, sans-serif-Medium, Tourney;
+  color: var(--color);
+  transition: 0.2s;
+
+  text-shadow: 0 0 10px var(--color), 0 0 20px var(--color),
+    0 0 40px var(--color), 0 0 80px var(--color);
+}
+
+bid-input button:is(:hover, :focus) {
+  filter: brightness(2);
+  transform: scale(1.5);
+}
+bid-input p {
+  --color: white;
+}
+
+bid-input button.plus {
+  --color: green;
+}
+
+bid-input button.minus {
+  --color: red;
+}
+
+.bid-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }

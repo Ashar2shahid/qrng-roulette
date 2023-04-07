@@ -62,7 +62,7 @@ export const wheel = (set, get) => ({
     })),
 
   writeContract: async () => {
-    const { selection, numbers } = get().grid;
+    const { selection, numbers, ticket } = get().grid;
     const { setIsSpinning, setResult, setSpinned, setIsWinner } = get().wheel;
     const { contractAddress } = get();
 
@@ -77,7 +77,7 @@ export const wheel = (set, get) => ({
       functionName: selection?.contractFunction, //call function based on selection
       args: [selection.value],
       overrides: {
-        value: ethers.utils.parseEther("0.001"),
+        value: ethers.utils.parseEther(ticket * 0.001 + ""),
       },
     });
 

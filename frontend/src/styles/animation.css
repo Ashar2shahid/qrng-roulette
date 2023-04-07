@@ -14,6 +14,45 @@ inner-column {
   animation: blackout-in 6s linear;
 }
 
+.button.connect,
+.wallet-wrapper .balance {
+  color: tomato;
+  --color1: orangered;
+  --color2: firebrick;
+  --color3: maroon;
+  --color4: darkred;
+  text-shadow: 0 0 10px var(--color1), 0 0 20px var(--color2),
+    0 0 40px var(--color3), 0 0 80px var(--color4);
+  will-change: filter, color;
+  filter: saturate(60%);
+}
+
+@media (min-width: 1000px) {
+  .flicker-in-2 {
+    animation: flicker-in-2 2s linear !important;
+  }
+  .flicker-animation2 {
+    animation: flicker 5s infinite 3s step-end;
+    animation-delay: 2s;
+  }
+
+  .flicker-animation,
+  #back-spin path:nth-of-type(2) {
+    animation: flicker 6s infinite step-end;
+    animation-delay: 2s;
+  }
+
+  .button.connect,
+  .wallet-wrapper .balance {
+    animation: colorFlicker steps(100) 60s;
+  }
+
+  div.result {
+    animation: pulsate 2s infinite alternate;
+    animation-delay: 5s !important;
+  }
+}
+
 @keyframes flicker-in-2 {
   0% {
     opacity: 0;
@@ -150,10 +189,6 @@ inner-column {
   }
 }
 
-.flicker-in-2 {
-  animation: flicker-in-2 2s linear !important;
-}
-
 @keyframes flicker {
   0% {
     opacity: 1;
@@ -201,17 +236,6 @@ inner-column {
   }
 }
 
-.flicker-animation2 {
-  animation: flicker 5s infinite 3s step-end;
-  animation-delay: 2s;
-}
-
-.flicker-animation,
-#back-spin path:nth-of-type(2) {
-  animation: flicker 6s infinite step-end;
-  animation-delay: 2s;
-}
-
 @keyframes pulseGlow {
   0% {
     text-shadow: 0px 0px 20px #0d106e;
@@ -255,21 +279,6 @@ inner-column {
   }
 }
 
-.button.connect,
-.wallet-wrapper .balance {
-  color: tomato;
-  --color1: orangered;
-  --color2: firebrick;
-  --color3: maroon;
-  --color4: darkred;
-  text-shadow: 0 0 10px var(--color1), 0 0 20px var(--color2),
-    0 0 40px var(--color3), 0 0 80px var(--color4);
-
-  will-change: filter, color;
-  filter: saturate(60%);
-  animation: colorFlicker steps(100) 60s;
-}
-
 @keyframes pulsate {
   100% {
     /* Larger blur radius */
@@ -283,141 +292,7 @@ inner-column {
   }
 }
 
-div.result {
-  animation: pulsate 2s infinite alternate;
-  animation-delay: 5s !important;
-}
-/*
-
-.flicker-in-1-animista {
-  animation: flicker-in-1-animista 2s linear both;
-}
-
-@keyframes flicker-in-1-animista {
-  0% {
-    opacity: 0;
-  }
-  10% {
-    opacity: 0;
-  }
-  10.1% {
-    opacity: 1;
-  }
-  10.2% {
-    opacity: 0;
-  }
-  20% {
-    opacity: 0;
-  }
-  20.1% {
-    opacity: 1;
-  }
-  20.6% {
-    opacity: 0;
-  }
-  30% {
-    opacity: 0;
-  }
-  30.1% {
-    opacity: 1;
-  }
-  30.5% {
-    opacity: 1;
-  }
-  30.6% {
-    opacity: 0;
-  }
-  45% {
-    opacity: 0;
-  }
-  45.1% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 1;
-  }
-  55% {
-    opacity: 1;
-  }
-  55.1% {
-    opacity: 0;
-  }
-  57% {
-    opacity: 0;
-  }
-  57.1% {
-    opacity: 1;
-  }
-  60% {
-    opacity: 1;
-  }
-  60.1% {
-    opacity: 0;
-  }
-  65% {
-    opacity: 0;
-  }
-  65.1% {
-    opacity: 1;
-  }
-  75% {
-    opacity: 1;
-  }
-  75.1% {
-    opacity: 0;
-  }
-  77% {
-    opacity: 0;
-  }
-  77.1% {
-    opacity: 1;
-  }
-  85% {
-    opacity: 1;
-  }
-  85.1% {
-    opacity: 0;
-  }
-  86% {
-    opacity: 0;
-  }
-  86.1% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-*/
-
-/*
-*
-*
-*
-*
-
-v
-v
-*
-*
-
-*
-*
-*
-*
-*
-
-*
-*
-*
-v
-
-
-
-
-
-
-OLD*/
+/* OLD */
 .wobble-hor-bottom {
   animation: wobble-hor-bottom 0.8s both;
 }

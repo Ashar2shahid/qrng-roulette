@@ -4,6 +4,7 @@ import Halves from "./Halves";
 import Thirds from "./Thirds";
 import useStore from "/src/store";
 import howler from "howler";
+import Bid from "../WheelModule/Bid";
 
 export default function NumbersGrid() {
   const { spinned, isSpinning } = useStore((state) => state.wheel);

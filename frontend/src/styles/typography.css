@@ -195,14 +195,12 @@
 .attention-voice span {
   font-family: Tourney, sans-serif;
   /* font-size: 4rem; */
-  font-size: clamp(2.00rem, calc(1.19rem + 4.07vw), 5.00rem);;
+  font-size: clamp(2rem, calc(1.19rem + 4.07vw), 5rem);
 
   text-transform: capitalize;
   color: white;
   font-style: italic;
 }
-
-
 
 .notice-voice {
   font-family: Tourney, sans-serif-Medium, Tourney;

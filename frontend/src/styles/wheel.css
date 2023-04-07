@@ -10,6 +10,7 @@ svg {
   stroke-linejoin: round;
   stroke-miterlimit: 2;
 }
+
 svg.wheel {
   border-radius: 50%;
   animation: rotate-wheel 300s linear infinite;
@@ -113,6 +114,7 @@ div.spin-text {
   left: 50%;
   transform: translate(-50%, -50%) scale(0.8);
 }
+
 div.spin-text span {
   color: white;
   font-family: Tourney, sans-serif, sans-serif;

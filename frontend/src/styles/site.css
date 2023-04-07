@@ -149,3 +149,9 @@ inner-column {
 .dimmed numbers-grid {
   pointer-events: none;
 }
+
+@media (max-width: 1500px) {
+  roulette-module {
+    /* overflow-y: none; */
+  }
+}

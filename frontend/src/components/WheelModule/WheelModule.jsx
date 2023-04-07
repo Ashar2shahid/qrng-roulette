@@ -16,7 +16,12 @@ export default function WheelModule() {
 
   const neonBlink = new howler.Howl({
     src: ["/src/assets/sounds/neon-blink.wav"],
-    volume: 0.1,
+    volume: 0.01,
+  });
+
+  const blink = new howler.Howl({
+    src: ["/src/assets/sounds/blink.wav"],
+    volume: 0.01,
   });
 
   const { numbers, selection } = useStore((state) => state.grid);
@@ -70,7 +75,7 @@ export default function WheelModule() {
   //highlight number on wheel
   function highlight(num) {
     setCenter(num.number); //set center number
-    //  num.number % 2 === 0 ? neonBlink.play() : blink.play();
+    //   num.number % 2 === 0 ? neonBlink.play() : blink.play();
     neonBlink.play();
     wheelStrokeColor(num);
 

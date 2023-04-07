@@ -2,7 +2,6 @@ inner-column {
   display: grid;
   gap: 40px;
   justify-items: center;
-  margin-top: 20px;
 }
 
 roulette-module {
