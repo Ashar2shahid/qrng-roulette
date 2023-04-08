@@ -100,6 +100,12 @@ bid-input button:is(:hover, :focus) {
   filter: brightness(2);
   transform: scale(1.5);
 }
+
+bid-input button:is(:active) {
+  filter: brightness(2);
+  transform: scale(1);
+}
+
 bid-input p {
   --color: white;
 }
@@ -115,4 +121,28 @@ bid-input button.minus {
 .bid-box {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+bid-input:has(input) {
+  justify-self: stretch;
+
+  grid-template-columns: unset;
+}
+
+bid-input input {
+  --color: white;
+  font-size: 2rem;
+  font-family: Tourney, sans-serif-Medium, Tourney;
+  outline: 1px solid var(--color);
+  box-shadow: 0px 0px 5px var(--color);
+  width: 250px;
+  padding: 0;
+  margin: 0;
+
+  color: var(--color);
+  background-color: var(--paper);
+  transition: 0.2s;
+  text-align: center;
+  text-shadow: 0 0 10px var(--color), 0 0 20px var(--color),
+    0 0 40px var(--color), 0 0 80px var(--color);
 }
