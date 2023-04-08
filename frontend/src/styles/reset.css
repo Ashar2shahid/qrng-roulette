@@ -272,7 +272,6 @@ button,
 input[type="reset"],
 input[type="button"],
 input[type="submit"] {
-  /* Fix IE7 display bug */
   overflow: visible;
   width: auto;
 }

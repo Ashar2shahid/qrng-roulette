@@ -33,6 +33,7 @@ export default function Bid() {
           }}
         >
           {ticket}
+          <sub>{(0.001 * ticket).toFixed(3)}Ξ</sub>
         </p>
         <button className="plus" onClick={plusTicket}>
           +
@@ -47,6 +48,11 @@ export default function Bid() {
           value={ticket}
           onChange={(event) => setTicket(Number(event.target.value))}
           onBlur={() => setTextEdit(false)}
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              setTextEdit(false);
+            }
+          }}
         />
       </bid-input>
     </>

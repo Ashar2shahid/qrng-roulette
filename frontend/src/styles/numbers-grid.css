@@ -78,8 +78,8 @@ numbers-grid span {
 numbers-grid input:checked + label span,
 label.checked span {
   --color: var(--green);
-  text-shadow: 0 0 10px var(--color), 0 0 20px var(--color),
-    0 0 40px var(--color), 0 0 80px var(--color);
+  text-shadow: 0 0 0.625em var(--color), 0 0 1.25em var(--color),
+    0 0 2.5em var(--color), 0 0 5em var(--color);
   color: var(--color);
 }
 numbers-grid input:checked + label,

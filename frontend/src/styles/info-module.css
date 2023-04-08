@@ -42,7 +42,7 @@ choose-box {
   border: 3px solid white;
   padding: 20px;
   box-shadow: 0 0 5px, 0 0 10px, 0 0 25px;
-  text-shadow: 0 0 10px, 0 0 20px, 0 0 30px;
+  text-shadow: 0 0 0.625em, 0 0 1.25em, 0 0 1.875em;
 }
 
 .or-text,
@@ -89,7 +89,7 @@ results-box {
   border: 3px solid white;
   padding: 20px;
   box-shadow: 0 0 5px, 0 0 10px, 0 0 25px;
-  text-shadow: 0 0 5px, 0 0 10px, 0 0 20px;
+  text-shadow: 0 0 0.3125em, 0 0 0.625em, 0 0 1.25em;
 }
 
 results-box .congrats-text {
@@ -129,8 +129,8 @@ results-box .congrats-text span {
   font-size: 32px;
   border: 3px solid var(--red);
   padding: 10px;
-  box-shadow: 0 0 5px, 0 0 10px, 0 0 25px;
-  text-shadow: 0 0 10px, 0 0 20px, 0 0 30px;
+  box-shadow: 0 0 0.3125rem, 0 0 0.625rem, 0 0 1.5625rem;
+  text-shadow: 0 0 0.625em, 0 0 1.25em, 0 0 1.875em;
 }
 
 @media (max-width: 580px) {

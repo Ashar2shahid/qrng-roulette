@@ -122,7 +122,7 @@ div.spin-text span {
   font-style: italic;
   font-size: 40px;
 
-  text-shadow: 0 0 10px, 0 0 20px, 0 0 40px, 0 0 80px;
+  text-shadow: 0 0 0.625em, 0 0 1.25em, 0 0 2.5em, 0 0 5em;
 }
 
 #blue-arrow {
@@ -154,8 +154,8 @@ div.result {
   transform: translate(-50%, -50%);
   font-size: 5rem;
   font-weight: 100;
-  text-shadow: 0 0 10px var(--color), 0 0 20px var(--color),
-    0 0 40px var(--color), 0 0 80px var(--color);
+  text-shadow: 0 0 0.625em var(--color), 0 0 1.25em var(--color),
+    0 0 2.5em var(--color), 0 0 5em var(--color);
 }
 
 div.result.red {
